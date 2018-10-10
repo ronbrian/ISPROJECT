@@ -15,7 +15,7 @@ $bp = $_GET["bp"];
 $condition = $_GET["condition"];
 $date = $_GET["date"];
 
-    //id number from the database
+    //id number from the database 
     $indexno ;
 
 
@@ -24,14 +24,11 @@ $sql = "INSERT INTO `patient`(`Name`, `age`, `id`, `Tel`, `email`, `gender`) VAL
 
 if ($conn->query($sql) === TRUE) {
 
-    echo "<script> alert('Patient has been recorded !!'); </script>";
-    
-    $vb = 1;
-
+   
 
 }else{
     echo "<script> alert('ERROR !!'); </script>";
-    header("Location: ");
+    header("Location: clerk.php ");
 
 
 }
@@ -54,17 +51,20 @@ $result = $conn->query($sql2);
 
 $bmi = $_GET["weight"]/$_GET["height"];
 
-$sql3 = "INSERT INTO `patient record`(`id`, `Height`, `weight`, `bmi`, `blood pressure`, `conditions`, `date`) VALUES ('$indexno','$height','$weight','$bmi','$bp','$condition','$date')";
+$sql3 = "INSERT INTO `patient record`(`id`, `Height`, `weight`, `bmi`, `blood pressure`, `conditions`, `date`) VALUES ('$id','$height','$weight','$bmi','$bp','$condition','$time')";
 if ($conn->query($sql3) === TRUE) {
 
     echo "<script> alert('Patient has been recorded !!'); </script>";
-    
+    header("Location: clerk.php ");
+
     
 
 
 }else{
     echo "<script> alert('ERROR !!'); </script>";
-    header("Location: ");
+    header("Location: clerk.php ");
+
+  
 
 
 }
