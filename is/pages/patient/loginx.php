@@ -42,6 +42,7 @@ if ($result = mysqli_query($conn, $sql)) {
 
 
         $_SESSION["user"] = $name;
+        $_SESSION["userid"] = $loginusername;
         header("Location: patienthome.php ");
 
 

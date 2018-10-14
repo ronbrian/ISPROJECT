@@ -81,7 +81,7 @@
 
                                                 <div class="group">
                                                         <label for="user" class="label">bmi</label>
-                                                        <input id="bmi" type="text" name="bmi" class="input" value = "rr" >
+                                                        <input id="bmi" type="text" name="bmi" class="input" value = "" disabled>
                                                 </div>
 
                                                 <div class="group">

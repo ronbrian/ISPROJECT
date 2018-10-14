@@ -8,13 +8,13 @@ session_start();
  $notes = $_GET["notes"];
  $prescription = $_GET["prescrition"];
  
- $doctor = $_GET["doctor"];
+ $doctor =$_SESSION["user"];
  
  
 
 
 
- $sql = " INSERT INTO `medical info`(`id`, `symptoms`, `period`, `diagnosis`, `prescription`, `notes`, `doctor`, `date`) VALUES ('$patientid','$symptoms','$period','$diagnosis','$prescription','$notes','$doctor','$time') ";
+ $sql = " INSERT INTO `medical info`(`id`, `symptoms`, `period`, `diagnosis`, `prescription`, `notes`, `doctor`, `date`, `hospital`) VALUES ('$patientid','$symptoms','$period','$diagnosis','$prescription','$notes','$doctor','$time','Kenyatta National Hospital') ";
  
  
  if ($conn->query($sql) === TRUE) {

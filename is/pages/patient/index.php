@@ -72,7 +72,7 @@
         <div class="card">
 
             <form>
-                First name:
+                Enter your ID Number:<br>
                 <input type="text" onkeyup="showHint(this.value)" id="display1">
             </form>
             <button onclick="func1()"> Submit </button><br>
