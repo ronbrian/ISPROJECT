@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 10, 2018 at 12:00 PM
+-- Generation Time: Oct 14, 2018 at 12:09 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -111,7 +111,10 @@ INSERT INTO `logs` (`no`, `id`, `time`, `doctor`) VALUES
 (293, 3, '2018/10/08/07:41', 'mjuma'),
 (294, 36941325, '2018/10/08/07:42', 'mjuma'),
 (295, 9890, '2018/10/08/07:42', 'mjuma'),
-(296, 3, '2018/10/09/02:48', 'ronb');
+(296, 3, '2018/10/09/02:48', 'ronb'),
+(297, 3, '2018/10/13/05:19', 'mjuma'),
+(298, 67654343, '2018/10/14/11:04', 'mjuma'),
+(299, 3, '2018/10/14/11:04', 'mjuma');
 
 -- --------------------------------------------------------
 
@@ -167,10 +170,11 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`no`, `name`, `age`, `id`, `tel`, `email`, `gender`, `password`, `isactive`) VALUES
-(3, 'Ron Brian', 19, '36941325', 704814222, 'ronmachoka@gmail.com', 'M', '0', 0),
+(3, 'Ron Brian', 19, '36941325', 704814222, 'ronmachoka@gmail.com', 'M', 'qwerty', 0),
 (4, 'James Mwangi', 23, '12345678', 788787664, 'james@strathmore.edu', 'M', '0', 0),
 (5, 'Test User 1', 40, '87654321', 777889874, 'testuser@gmail.com', 'M', '0', 0),
-(8, 'Test User 3', 8, '3', 0, '', 'M', '0', 0);
+(8, 'Test User 3', 8, '3', 0, '', 'M', '0', 0),
+(9, 'Stacy', 29, '99', 766758443, 'stacy@gmail.com', 'F', '0', 0);
 
 -- --------------------------------------------------------
 
@@ -197,7 +201,8 @@ INSERT INTO `patient record` (`no`, `id`, `height`, `weight`, `bmi`, `blood pres
 (1, 36941325, 2, 64, 0, 80, 'NONE', '2018/10/04/04:31'),
 (2, 12345678, 2, 23, 0, 88, 'NONE', '2018/10/04/04:31'),
 (4, 87654321, 2, 98, 1, 80, 'None', '2018/10/07/08:43'),
-(7, 3, 1, 23, 0, 56, 'Nose Bleeding', '2018/10/07/08:45');
+(7, 3, 1, 23, 0, 56, 'Nose Bleeding', '2018/10/07/08:45'),
+(8, 99, 2, 64, 0, 56, 'NONE', '2018/10/14/12:33');
 
 -- --------------------------------------------------------
 
@@ -222,6 +227,39 @@ INSERT INTO `staff` (`Name`, `username`, `ID`, `title`, `password`) VALUES
 ('Hellen Njoki', 'hnjoki', 2, 'clerk', 'qwe'),
 ('mzee juma', 'mjuma', 3, 'doctor', 'zxc'),
 ('Brian Njogu', 'bnjogu', 4, 'clerk', 'asd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`) VALUES
+(5, 'akinyi'),
+(8, 'lawrence'),
+(10, 'jemo'),
+(12, 'odede'),
+(32, 'wilberforce'),
+(81, 'ashley'),
+(12345678, 'james'),
+(36941325, 'ron'),
+(0, 'Sign Up and Proceed to Log In'),
+(0, 'loiko'),
+(0, 'qwerty'),
+(0, 'password=mkmk'),
+(0, '3'),
+(0, '3'),
+(0, 'password=waze'),
+(0, 'cvbvc');
 
 --
 -- Indexes for dumped tables
@@ -283,7 +321,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=297;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
 
 --
 -- AUTO_INCREMENT for table `medical info`
@@ -295,13 +333,13 @@ ALTER TABLE `medical info`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `patient record`
 --
 ALTER TABLE `patient record`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `staff`
