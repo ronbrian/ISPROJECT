@@ -43,6 +43,9 @@
 						<div class="hr"></div>
 						<div class="foot-lnk">
 							<a href="#forgot">Forgot Password?</a>
+
+							<br><br><a href ="pages/patient/index.php "> Log In as Patient </a>
+
 						</div>
 				</form>
 				</div>
@@ -50,7 +53,6 @@
 			</div>
 		</div>
 	</div>
-
 
 
 </body>

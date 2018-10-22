@@ -1,0 +1,65 @@
+<?php 
+session_start();
+include 'dbconnect.php';
+
+
+
+
+
+
+
+$sql=" SELECT `name`, `current time`, `appointment date`, `appointment time`, `service`, `viewed` FROM `appointments` ";
+
+$result = $conn->query($sql);
+/*   RETRIEVING APPOINTMENTS  */
+
+if ($result->num_rows > 0) {
+// output data of each row
+
+$count=1;
+
+while($row = $result->fetch_assoc()) {
+     
+    $name =  $row["name"];
+    $currenttime =  $row["current time"];
+    $appointmentdate =  $row["appointment date"];
+    $appointmenttime =  $row["appointment time"];
+    $service =  $row["service"];
+    $viewed = $row["viewed"];
+
+    
+
+    
+
+    echo $count."<br>";
+    echo "Patient Name : ".$name."<br>";  
+   
+    echo "Appointment Date : ".$appointmentdate."<br>";    
+    echo "Appointment Time : ".$appointmenttime."<br>";    
+    echo "Service : ".$service."<br>";    
+    echo "                                                                                             
+                                                                                   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                        
+                                                                                               
+                                                                                                         
+                                                                                               <a href=''> Mark as read </a>";
+
+    echo "<br>- - - - - - - - - - - - - - - - - - - -<br>";
+    $count++;
+
+
+}
+     } else {
+
+    //nothing goes here
+
+}
+
+
+
+
+
+
+
+
+?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 14, 2018 at 12:09 PM
+-- Generation Time: Oct 22, 2018 at 12:32 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -21,6 +21,37 @@ SET time_zone = "+00:00";
 --
 -- Database: `isproject`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointments`
+--
+
+CREATE TABLE `appointments` (
+  `no` int(11) NOT NULL,
+  `user id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `current time` varchar(50) NOT NULL,
+  `appointment date` varchar(100) NOT NULL,
+  `appointment time` varchar(50) NOT NULL,
+  `service` varchar(20) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `viewed` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`no`, `user id`, `name`, `current time`, `appointment date`, `appointment time`, `service`, `status`, `viewed`) VALUES
+(20, 36941325, 'Ron Brian', '2018/10/20/07:20', '2018-10-30', '14:00', 'Laboratory Tests', '', 1),
+(23, 36941325, 'Ron Brian', '2018/10/20/08:37', '', '', 'Doctor Consultation', '', 0),
+(24, 36941325, 'Ron Brian', '2018/10/20/08:40', '', '', 'Doctor Consultation', '', 0),
+(25, 36941325, 'Ron Brian', '2018/10/20/08:40', '', '', 'Doctor Consultation', '', 0),
+(26, 36941325, 'Ron Brian', '2018/10/20/08:41', '', '', 'Doctor Consultation', '', 0),
+(27, 36941325, 'Ron Brian', '2018/10/20/10:12', '2018-10-15', '12:07', 'Doctor Consultation', '', 0),
+(28, 1738, 'Mary Wambui', '2018/10/20/10:23', '2018-10-11', '15:58', 'Doctor Consultation', '', 0);
 
 -- --------------------------------------------------------
 
@@ -114,7 +145,27 @@ INSERT INTO `logs` (`no`, `id`, `time`, `doctor`) VALUES
 (296, 3, '2018/10/09/02:48', 'ronb'),
 (297, 3, '2018/10/13/05:19', 'mjuma'),
 (298, 67654343, '2018/10/14/11:04', 'mjuma'),
-(299, 3, '2018/10/14/11:04', 'mjuma');
+(299, 3, '2018/10/14/11:04', 'mjuma'),
+(300, 3, '2018/10/14/01:37', 'mjuma'),
+(301, 3, '2018/10/14/05:35', 'mjuma'),
+(302, 36941325, '2018/10/14/05:35', 'mjuma'),
+(303, 36941325, '2018/10/14/05:39', 'mjuma'),
+(304, 36941325, '2018/10/14/05:56', 'jmwangi'),
+(305, 3, '2018/10/17/09:56', 'mjuma'),
+(306, 3, '2018/10/18/11:14', 'mjuma'),
+(307, 36941325, '2018/10/18/11:31', 'mjuma'),
+(308, 36941325, '2018/10/19/02:03', 'mjuma'),
+(309, 36941325, '2018/10/20/05:29', 'mjuma'),
+(310, 3, '2018/10/20/05:29', 'mjuma'),
+(311, 36941325, '2018/10/20/05:29', 'mjuma'),
+(312, 23, '2018/10/20/05:29', 'mjuma'),
+(313, 43, '2018/10/20/05:30', 'mjuma'),
+(314, 1234321, '2018/10/20/05:30', 'mjuma'),
+(315, 0, '2018/10/20/05:30', 'mjuma'),
+(316, 36941325, '2018/10/20/07:20', 'mjuma'),
+(317, 12345678, '2018/10/20/08:34', 'mjuma'),
+(318, 3, '2018/10/20/08:55', 'mjuma'),
+(319, 36941325, '2018/10/20/10:37', 'mjuma');
 
 -- --------------------------------------------------------
 
@@ -131,21 +182,23 @@ CREATE TABLE `medical info` (
   `prescription` varchar(200) NOT NULL,
   `notes` text NOT NULL,
   `doctor` text NOT NULL,
-  `date` varchar(30) NOT NULL
+  `date` varchar(30) NOT NULL,
+  `hospital` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `medical info`
 --
 
-INSERT INTO `medical info` (`no`, `id`, `symptoms`, `period`, `diagnosis`, `prescription`, `notes`, `doctor`, `date`) VALUES
-(22, 36941325, 'Headache', '3', '', '', '', '', '2018/10/07/08:36'),
-(23, 3, '............', '', '', '', '', '', '2018/10/07/08:46'),
-(24, 0, '', '', '', '', '', '', '2018/10/07/08:47'),
-(25, 12345678, '', '', '', '', '', '', '2018/10/07/08:47'),
-(26, 3, 'ccccccccccc', '', '', '', '', '', '2018/10/07/08:50'),
-(27, 36941325, '1111111111111', '', '', '', '', '', '2018/10/07/09:12'),
-(28, 12345678, '', '', '', '', '', '', '2018/10/07/09:14');
+INSERT INTO `medical info` (`no`, `id`, `symptoms`, `period`, `diagnosis`, `prescription`, `notes`, `doctor`, `date`, `hospital`) VALUES
+(23, 3, '............', '', '', '', '', '', '2018/10/07/08:46', ''),
+(24, 0, '', '', '', '', '', '', '2018/10/07/08:47', ''),
+(25, 12345678, '', '', '', '', '', '', '2018/10/07/08:47', ''),
+(26, 3, 'ccccccccccc', '', '', '', '', '', '2018/10/07/08:50', ''),
+(28, 12345678, '', '', '', '', '', '', '2018/10/07/09:14', ''),
+(29, 36941325, 'Stomach Ache', '4 Months', 'Ulcers / Stomach Ulcers', '', 'Take with Plenty of water, and do not skip meals.', 'mjuma', '2018/10/14/05:36', ''),
+(30, 36941325, 'Headache', '3 days', 'Lack of sleep', '', 'Take with a glass of plain water', 'mjuma', '2018/10/14/05:39', ''),
+(31, 36941325, 'Unknown', 'Not Sure', 'Nothing', '', 'No Etra Notes', 'jmwangi', '2018/10/14/05:56', 'Kenyatta National Hospital');
 
 -- --------------------------------------------------------
 
@@ -174,7 +227,8 @@ INSERT INTO `patient` (`no`, `name`, `age`, `id`, `tel`, `email`, `gender`, `pas
 (4, 'James Mwangi', 23, '12345678', 788787664, 'james@strathmore.edu', 'M', '0', 0),
 (5, 'Test User 1', 40, '87654321', 777889874, 'testuser@gmail.com', 'M', '0', 0),
 (8, 'Test User 3', 8, '3', 0, '', 'M', '0', 0),
-(9, 'Stacy', 29, '99', 766758443, 'stacy@gmail.com', 'F', '0', 0);
+(9, 'Stacy', 29, '99', 766758443, 'stacy@gmail.com', 'F', '0', 0),
+(10, 'Mary Wambui', 34, '1738', 788688584, 'mwambui@gmail.com', 'F', 'qwerty', 0);
 
 -- --------------------------------------------------------
 
@@ -185,9 +239,9 @@ INSERT INTO `patient` (`no`, `name`, `age`, `id`, `tel`, `email`, `gender`, `pas
 CREATE TABLE `patient record` (
   `no` int(11) NOT NULL,
   `id` int(11) NOT NULL,
-  `height` int(11) NOT NULL,
-  `weight` int(11) NOT NULL,
-  `bmi` int(11) NOT NULL,
+  `height` float NOT NULL,
+  `weight` float NOT NULL,
+  `bmi` decimal(10,2) NOT NULL,
   `blood pressure` int(11) NOT NULL,
   `conditions` text NOT NULL,
   `date` varchar(50) NOT NULL
@@ -198,11 +252,12 @@ CREATE TABLE `patient record` (
 --
 
 INSERT INTO `patient record` (`no`, `id`, `height`, `weight`, `bmi`, `blood pressure`, `conditions`, `date`) VALUES
-(1, 36941325, 2, 64, 0, 80, 'NONE', '2018/10/04/04:31'),
-(2, 12345678, 2, 23, 0, 88, 'NONE', '2018/10/04/04:31'),
-(4, 87654321, 2, 98, 1, 80, 'None', '2018/10/07/08:43'),
-(7, 3, 1, 23, 0, 56, 'Nose Bleeding', '2018/10/07/08:45'),
-(8, 99, 2, 64, 0, 56, 'NONE', '2018/10/14/12:33');
+(1, 36941325, 2, 66, '16.50', 84, 'NONE', '2018/10/04/04:31'),
+(2, 12345678, 2, 23, '0.00', 88, 'NONE', '2018/10/04/04:31'),
+(4, 87654321, 2, 98, '22.00', 80, 'None', '2018/10/07/08:43'),
+(7, 3, 76, 56, '30.65', 88, 'none', '2018/10/07/08:45'),
+(8, 99, 2, 64, '0.00', 56, 'NONE', '2018/10/14/12:33'),
+(9, 1738, 1.5, 82, '0.55', 84, 'NONE', '2018/10/20/09:14');
 
 -- --------------------------------------------------------
 
@@ -266,6 +321,15 @@ INSERT INTO `users` (`id`, `username`) VALUES
 --
 
 --
+-- Indexes for table `appointments`
+--
+ALTER TABLE `appointments`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `no` (`no`),
+  ADD KEY `user id` (`user id`),
+  ADD KEY `no_2` (`no`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -318,28 +382,34 @@ ALTER TABLE `staff`
 --
 
 --
+-- AUTO_INCREMENT for table `appointments`
+--
+ALTER TABLE `appointments`
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=320;
 
 --
 -- AUTO_INCREMENT for table `medical info`
 --
 ALTER TABLE `medical info`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `patient record`
 --
 ALTER TABLE `patient record`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `staff`
