@@ -91,7 +91,14 @@ $_SESSION["idpatient"] = $patientid;
 
 
 echo " 
-<div>
+<script>
+    $(document).ready(function () {
+        $('#namehide').hide();  
+    });
+</script>
+
+
+<div id='namehide' >
 <form>
 <input id='sendname' value='".$name."' disabled>
 

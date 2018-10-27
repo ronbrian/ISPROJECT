@@ -79,7 +79,7 @@ include 'dbconnect.php';
 
             <div class="card" id="medicalinfo">
                 <h4> Medical Info</h4>
-                <form action="medicalinfox.php" method="">
+                <form id="medicalinfox" action="medicalinfox.php" method="">
                     <div>
 
                         <div class="group">
@@ -146,6 +146,7 @@ include 'dbconnect.php';
 
             <div class="card" id="admission">
                 <form>
+                <div id = "hiddendiv">
                 <div class="">
                     <label for="id" class="label">ID</label><br>
                     <input id="id" type="text" name="id" class="input" >
@@ -171,8 +172,12 @@ include 'dbconnect.php';
                     <input id="doctor2" type="text" name="doctor2" class="input" value="<?php echo $_SESSION["user"] ; ?>" >
                 </div>
 
+
+                </div>
                 <div class="group">
-                   <input type="submit" class="button" value="Send">&nbsp;&nbsp;&nbsp;
+                    <p>Are you sure ?<br></p>
+                   <input type="submit" class="button" value="Send" onclick="myfunc3()" >     &nbsp;&nbsp;&nbsp;
+                   <button onclick = "submitting()">c</button>
                    <label for="" class="label"> Cancel </label><br>
 
                 </div>
@@ -205,6 +210,7 @@ include 'dbconnect.php';
         $('#patientdetails').load('fetchpatient.php');
         //$("#patientdetails").show();
         $("#admission").hide();
+        $("#hiddendiv").hide();
 
 
 
@@ -282,6 +288,7 @@ function myF3(){
     }
 
     function send(){
+
         $("#admission").show();
         document.getElementById("id").value = document.getElementById("idpatient").value;
         document.getElementById("name2").value = document.getElementById("sendname").value;
@@ -291,6 +298,36 @@ function myF3(){
 
     }
 
+
+    function myfunc3() {
+
+
+        var xyz = document.getElementById("id").value + "&name=" + document.getElementById("name2").value + "&diagnosis=" + document.getElementById("diagnosis2").value + "&prescription=" + document.getElementById("prescription2").value + "&doctor=" + document.getElementById("doctor2").value ;
+        if (xyz.length == 0) {
+
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+
+                }
+            };
+            xmlhttp.open("GET", "sendinpatient.php?q=" + xyz, true);
+            xmlhttp.send();
+        }
+
+        alert(' Details have been sent for processing. ');
+    }
+
+
+function submitting(){
+    document.getElementById("medicalinfox").submit();
+
+
+
+}
 
 
 
