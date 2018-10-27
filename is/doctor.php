@@ -118,7 +118,7 @@ include 'dbconnect.php';
                             <!-- Patient ID:<br> <input type="text" id="myText" value="<?php echo $_SESSION["idpatient"]; ?>" disabled> -->
                  
 
-
+                        
 
 
                         <div class="group">
@@ -142,7 +142,15 @@ include 'dbconnect.php';
 
             </div>
 
-            <div class="card" id="#####">
+            <button id="send" onclick="send()" > Send Patient to Admission </button>
+
+            <div class="card" id="admission">
+                <form>
+                <div class="">
+                    <label for="id" class="label">ID</label><br>
+                    <input id="id" type="password" name="id" class="input" data-type="">
+                </div>
+                </form>
 
             </div>
         </div>
@@ -166,6 +174,8 @@ include 'dbconnect.php';
         //$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
         $('#patientdetails').load('fetchpatient.php');
         //$("#patientdetails").show();
+        $("#admission").hide();
+
 
 
 
@@ -180,6 +190,8 @@ function hiding(){
 
 $("#patientdetails").hide();
 $("#medicalinfo").hide();
+$("#send").hide();
+
 
 }
 
@@ -220,6 +232,13 @@ $("#medicalinfo").hide();
 
 
     }
+
+    function send(){
+        $("#admission").show();
+
+
+    }
+
 
 
 

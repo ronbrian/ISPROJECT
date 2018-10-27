@@ -36,16 +36,10 @@ while($row = $result->fetch_assoc()) {
    
     echo "Appointment Date : ".$appointmentdate."<br>";    
     echo "Appointment Time : ".$appointmenttime."<br>";    
-    echo "Service : ".$service."<br>";    
-    echo "                                                                                             
-                                                                                   
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                        
-                                                                                               
-                                                                                                         
-                                                                                               <a href=''> Mark as read </a>";
-
-    echo "<br>- - - - - - - - - - - - - - - - - - - -<br>";
-    $count++;
+    echo "Service : ".$service."<br>"; 
+    $count++;   
+    echo "---------------------------------------------<br>";
+ 
 
 
 }

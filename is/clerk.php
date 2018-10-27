@@ -135,7 +135,7 @@ include 'dbconnect.php';
             }
             
             $_SESSION["unread"] =$unread ;
-                echo $_SESSION["unread"];
+       
                 
     ?>
 
