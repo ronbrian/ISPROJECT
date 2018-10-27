@@ -148,8 +148,22 @@ include 'dbconnect.php';
                 <form>
                 <div class="">
                     <label for="id" class="label">ID</label><br>
-                    <input id="id" type="password" name="id" class="input" data-type="">
+                    <input id="id" type="text" name="id" class="input" >
                 </div>
+                
+                <div class="">
+                    <label for="name" class="label">Name</label><br>
+                    <input id="name" type="text" name="name" class="input" >
+                </div>
+
+                <div class="">
+                    <label for="diagnosis" class="label">Diagnosis</label><br>
+                    <input id="diagnosis" type="text" name="diagnosis" class="input" >
+                </div>
+
+
+
+
                 </form>
 
             </div>

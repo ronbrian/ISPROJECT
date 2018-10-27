@@ -38,7 +38,7 @@ while($row = $result->fetch_assoc()) {
     echo "Appointment Time : ".$appointmenttime."<br>";    
     echo "Service : ".$service."<br>"; 
     $count++;   
-    echo "---------------------------------------------<br>";
+    echo " - - - - - - - - - - - - - - - - -<br>";
  
 
 
