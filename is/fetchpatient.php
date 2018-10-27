@@ -87,6 +87,22 @@ echo  "Date Last Recorded : ".$date."<br><br><br>";
 echo  " <form><div class=group><label  class='label'> Patient ID : </label><input id='idpatient' type='text' name='idpatient' class='input' value ='".$patientid."' disabled></div> ";
 $_SESSION["idpatient"] = $patientid;
 
+
+
+
+echo " 
+<div>
+<form>
+<input id='sendname' value='".$name."' disabled>
+
+
+
+
+
+</form>
+</div>
+";
+
 if (isset($_SESSION["idpatient"])) {
 
 }else{

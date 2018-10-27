@@ -92,11 +92,11 @@ include 'dbconnect.php';
                         </div>
                         <div class="group">
                             <label for="user" class="label"> Diagnosis : </label><br />
-                            <input id="diagnosis" type="text" name="diagnosis" class="input">
+                            <input id="diagnosis" type="text" name="diagnosis" class="input" onkeyup="myF2()" >
                         </div>
                         <div class="group">
                             <label for="user" class="label"> Prescription : </label><br />
-                            <input id="prescription" type="text" name="prescription" class="input">
+                            <input id="prescription" type="text" name="prescription" class="input" onkeyup="myF3()"   >
                         </div>
                         <div class="group">
                             <label for="user" class="label"> Extra Optional Details/ Notes : </label><br />
@@ -153,15 +153,31 @@ include 'dbconnect.php';
                 
                 <div class="">
                     <label for="name" class="label">Name</label><br>
-                    <input id="name" type="text" name="name" class="input" >
+                    <input id="name2" type="text" name="name2" class="input" >
                 </div>
 
                 <div class="">
                     <label for="diagnosis" class="label">Diagnosis</label><br>
-                    <input id="diagnosis" type="text" name="diagnosis" class="input" >
+                    <input id="diagnosis2" type="text" name="diagnosis2" class="input" >
                 </div>
 
+                <div class="">
+                    <label for="prescription" class="label">Prescription</label><br>
+                    <input id="prescription2" type="text" name="prescription2" class="input" >
+                </div>
 
+                <div class="">
+                    <label for="" class="label">Doctor</label><br>
+                    <input id="doctor2" type="text" name="doctor2" class="input" value="<?php echo $_SESSION["user"] ; ?>" >
+                </div>
+
+                <div class="group">
+                   <input type="submit" class="button" value="Send">&nbsp;&nbsp;&nbsp;
+                   <label for="" class="label"> Cancel </label><br>
+
+                </div>
+
+                
 
 
                 </form>
@@ -209,6 +225,24 @@ $("#send").hide();
 
 }
 
+function myF2(){
+
+    var z = document.getElementById("diagnosis").value;
+    document.getElementById("diagnosis2").value = z;
+
+
+
+
+}
+
+
+function myF3(){
+    var zi = document.getElementById("prescription").value;
+    document.getElementById("prescription2").value = zi;
+
+
+}
+
 </script>
 
 
@@ -249,6 +283,10 @@ $("#send").hide();
 
     function send(){
         $("#admission").show();
+        document.getElementById("id").value = document.getElementById("idpatient").value;
+        document.getElementById("name2").value = document.getElementById("sendname").value;
+        document.getElementById("").value = document.getElementById("").value;
+
 
 
     }
