@@ -100,7 +100,7 @@ include 'dbconnect.php';
                         </div>
                         <div class="group">
                             <label for="user" class="label"> Extra Optional Details/ Notes : </label><br />
-                            <input id="notes" type="text" name="notes" class="input"><br /><br />
+                            <input id="notes" type="text" name="notes" class="input" onkeyup = "submitx()" ><br /><br />
                         </div>
                         <div class="group">
                             <label for="user" class="label"> Prescribing Doctor : </label>
@@ -177,7 +177,6 @@ include 'dbconnect.php';
                 <div class="group">
                     <p>Are you sure ?<br></p>
                    <input type="submit" class="button" value="Send" onclick="myfunc3()" >     &nbsp;&nbsp;&nbsp;
-                   <button onclick = "submitting()">c</button>
                    <label for="" class="label"> Cancel </label><br>
 
                 </div>
@@ -320,6 +319,31 @@ function myF3(){
 
         alert(' Details have been sent for processing. ');
     }
+
+
+    function submitx(){   //USE THIS TO SUBMIT THE DATA ON EACH KEYUP
+        
+        var xyz = document.getElementById("id").value + "&name=" + document.getElementById("name2").value + "&diagnosis=" + document.getElementById("diagnosis2").value + "&prescription=" + document.getElementById("prescription2").value + "&doctor=" + document.getElementById("doctor2").value ;
+        if (xyz.length == 0) {
+
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+
+                }
+            };
+            xmlhttp.open("GET", "sendinpatient.php?q=" + xyz, true);
+            xmlhttp.send();
+        }
+
+        alert(' Details have been sent for processing. ');
+
+    }
+
+
 
 
 function submitting(){
