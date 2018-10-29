@@ -6,7 +6,7 @@ $symptoms = $_GET["symptoms"];
 $period = $_GET["period"];
 $diagnosis = $_GET["diagnosis"];
 $notes = $_GET["notes"];
-$prescription = $_GET["prescrition"];
+$prescription = $_GET["prescription"];
 
 $doctor = $_SESSION["user"];
 

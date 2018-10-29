@@ -84,41 +84,41 @@ include 'dbconnect.php';
 
                         <div class="group">
                             <label for="user" class="label"> Symptoms / Causing Problems : </label>
-                            <input id="symptoms" type="text" name="symptoms" class="input">
+                            <input id="symptoms" type="text" name="symptoms" class="input" onkeyup="myF4()">
                         </div>
                         <div class="group">
                             <label for="user" class="label"> For How Long ? : </label><br />
-                            <input id="period" type="text" name="period" class="input">
+                            <input id="period" type="text" name="period" class="input" onkeyup="myF5()">
                         </div>
                         <div class="group">
                             <label for="user" class="label"> Diagnosis : </label><br />
-                            <input id="diagnosis" type="text" name="diagnosis" class="input" onkeyup="myF2()" >
+                            <input id="diagnosis" type="text" name="diagnosis" class="input" onkeyup="myF2()">
                         </div>
                         <div class="group">
                             <label for="user" class="label"> Prescription : </label><br />
-                            <input id="prescription" type="text" name="prescription" class="input" onkeyup="myF3()"   >
+                            <input id="prescription" type="text" name="prescription" class="input" onkeyup="myF3()">
                         </div>
                         <div class="group">
                             <label for="user" class="label"> Extra Optional Details/ Notes : </label><br />
-                            <input id="notes" type="text" name="notes" class="input" onkeyup = "submitx()" ><br /><br />
+                            <input id="notes" type="text" name="notes" class="input" onkeyup="myF6()"><br /><br />
                         </div>
                         <div class="group">
                             <label for="user" class="label"> Prescribing Doctor : </label>
-                            <input id="doctor" type="text" name="doctor" class="input" value="<?php echo $_SESSION["user"] ; ?>" placeholder="<?php echo $_SESSION["user"] ; ?>" disabled ><br /><br />
+                            <input id="doctor" type="text" name="doctor" class="input" value="<?php echo $_SESSION["user"] ; ?>" placeholder="
+                            <?php echo $_SESSION["user"] ; ?>" disabled ><br /><br />
 
                         </div>
                         <div class="group">
                             <br /><label for="user" class="label"> Current Date : </label></br>
                             <input id="date" type="text" name="date" class="input" value="<?php echo $time;?>" disabled><br /><br />
-
                         </div>
 
 
-                        
-                            <!-- Patient ID:<br> <input type="text" id="myText" value="<?php echo $_SESSION["idpatient"]; ?>" disabled> -->
-                 
 
-                        
+                        <!-- Patient ID:<br> <input type="text" id="myText" value="<?php echo $_SESSION["idpatient"]; ?>" disabled> -->
+
+
+
 
 
                         <div class="group">
@@ -142,46 +142,64 @@ include 'dbconnect.php';
 
             </div>
 
-            <button id="send" onclick="send()" > Send Patient to Admission </button>
+            <button id="send" onclick="send()"> Send Patient to Admission </button>
 
             <div class="card" id="admission">
                 <form>
-                <div id = "hiddendiv">
-                <div class="">
-                    <label for="id" class="label">ID</label><br>
-                    <input id="id" type="text" name="id" class="input" >
-                </div>
-                
-                <div class="">
-                    <label for="name" class="label">Name</label><br>
-                    <input id="name2" type="text" name="name2" class="input" >
-                </div>
+                    <div id="hiddendiv">
+                        <div class="">
+                            <label for="id" class="label">ID</label><br>
+                            <input id="id" type="text" name="id" class="input">
+                        </div>
 
-                <div class="">
-                    <label for="diagnosis" class="label">Diagnosis</label><br>
-                    <input id="diagnosis2" type="text" name="diagnosis2" class="input" >
-                </div>
+                        <div class="">
+                            <label for="name" class="label">Name</label><br>
+                            <input id="name2" type="text" name="name2" class="input">
+                        </div>
+                       <div class="group">
+                            <label for="user" class="label"> Symptoms / Causing Problems : </label>
+                            <input id="symptoms2" type="text" name="symptoms2" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label"> For How Long ? : </label><br />
+                            <input id="period2" type="text" name="period2" class="input">
+                        </div>
+                        <div class="">
+                            <label for="diagnosis" class="label">Diagnosis</label><br>
+                            <input id="diagnosis2" type="text" name="diagnosis2" class="input">
+                        </div>
 
-                <div class="">
-                    <label for="prescription" class="label">Prescription</label><br>
-                    <input id="prescription2" type="text" name="prescription2" class="input" >
-                </div>
+                        <div class="">
+                            <label for="prescription" class="label">Prescription</label><br>
+                            <input id="prescription2" type="text" name="prescription2" class="input">
+                        </div>
 
-                <div class="">
-                    <label for="" class="label">Doctor</label><br>
-                    <input id="doctor2" type="text" name="doctor2" class="input" value="<?php echo $_SESSION["user"] ; ?>" >
-                </div>
+                        <div class="group">
+                            <label for="user" class="label"> Extra Optional Details/ Notes : </label><br />
+                            <input id="notes2" type="text" name="notes2" class="input" onkeyup="submitx()"><br /><br />
+                        </div>
+                        <div class="">
+                            <label for="" class="label">Doctor</label><br>
+                            <input id="doctor2" type="text" name="doctor2" class="input" value="<?php echo $_SESSION["user"] ; ?>" >
+                        </div>
+
+ 
+
+                        <div class="group">
+                            <br /><label for="user" class="label"> Current Date : </label></br>
+                            <input id="date" type="text" name="date" class="input" value="<?php echo $time;?>" disabled><br /><br />
+                        </div>
 
 
-                </div>
-                <div class="group">
-                    <p>Are you sure ?<br></p>
-                   <input type="submit" class="button" value="Send" onclick="myfunc3()" >     &nbsp;&nbsp;&nbsp;
-                   <label for="" class="label"> Cancel </label><br>
+                    </div>
+                    <div class="group">
+                        <p>Are you sure ?<br></p>
+                        <input type="submit" class="button" value="Send" onclick="myfunc3()"> &nbsp;&nbsp;&nbsp;
+                        <label for="" class="label"> Cancel </label><br>
 
-                </div>
+                    </div>
 
-                
+
 
 
                 </form>
@@ -221,32 +239,51 @@ include 'dbconnect.php';
 </script>
 
 <script>
-function hiding(){
+    function hiding() {
 
-$("#patientdetails").hide();
-$("#medicalinfo").hide();
-$("#send").hide();
-
-
-}
-
-function myF2(){
-
-    var z = document.getElementById("diagnosis").value;
-    document.getElementById("diagnosis2").value = z;
+        $("#patientdetails").hide();
+        $("#medicalinfo").hide();
+        $("#send").hide();
 
 
+    }
+
+    function myF2() {
+
+        var z = document.getElementById("diagnosis").value;
+        document.getElementById("diagnosis2").value = z;
+
+    }
 
 
-}
+    function myF3() {
+        var zi = document.getElementById("prescription").value;
+        document.getElementById("prescription2").value = zi;
 
 
-function myF3(){
-    var zi = document.getElementById("prescription").value;
-    document.getElementById("prescription2").value = zi;
+    }
+
+        function myF4() {
+        var zii = document.getElementById("symptoms").value;
+        document.getElementById("symptoms2").value = zii;
 
 
-}
+    }
+
+        function myF5() {
+        var ziii = document.getElementById("period").value;
+        document.getElementById("period2").value = ziii;
+
+
+    }
+
+    function myF6() {
+        var ziiii = document.getElementById("notes").value;
+        document.getElementById("notes2").value = ziiii;
+
+
+    }
+
 
 </script>
 
@@ -286,7 +323,7 @@ function myF3(){
 
     }
 
-    function send(){
+    function send() {
 
         $("#admission").show();
         document.getElementById("id").value = document.getElementById("idpatient").value;
@@ -301,7 +338,7 @@ function myF3(){
     function myfunc3() {
 
 
-        var xyz = document.getElementById("id").value + "&name=" + document.getElementById("name2").value + "&diagnosis=" + document.getElementById("diagnosis2").value + "&prescription=" + document.getElementById("prescription2").value + "&doctor=" + document.getElementById("doctor2").value ;
+        var xyz = document.getElementById("id").value + "&name=" + document.getElementById("name2").value + "&diagnosis=" + document.getElementById("diagnosis2").value + "&prescription=" + document.getElementById("prescription2").value + "&doctor=" + document.getElementById("doctor2").value + "&patientid=" + document.getElementById("id").value + "&symptoms=" + document.getElementById("symptoms2").value + "&period=" + document.getElementById("period2").value + "&notes=" + document.getElementById("notes2").value;
         if (xyz.length == 0) {
 
             return;
@@ -321,37 +358,17 @@ function myF3(){
     }
 
 
-    function submitx(){   //USE THIS TO SUBMIT THE DATA ON EACH KEYUP
-        
-        var xyz = document.getElementById("id").value + "&name=" + document.getElementById("name2").value + "&diagnosis=" + document.getElementById("diagnosis2").value + "&prescription=" + document.getElementById("prescription2").value + "&doctor=" + document.getElementById("doctor2").value ;
-        if (xyz.length == 0) {
-
-            return;
-        } else {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
+ 
 
 
-                }
-            };
-            xmlhttp.open("GET", "sendinpatient.php?q=" + xyz, true);
-            xmlhttp.send();
-        }
 
-        alert(' Details have been sent for processing. ');
+
+    function submitting() {
+        document.getElementById("medicalinfox").submit();
+
+
 
     }
-
-
-
-
-function submitting(){
-    document.getElementById("medicalinfox").submit();
-
-
-
-}
 
 
 

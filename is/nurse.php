@@ -61,7 +61,9 @@ include 'dbconnect.php';
     
   
 
-    <button id="myBtn" > Register Patient </button>
+    <button id="myBtn" > Admit Patient </button>
+    <button id="myBtn" > View Pending Admitted Patients </button>
+    <button id="myBtn" > Call For Doctor </button>
 
 
 
