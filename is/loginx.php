@@ -75,6 +75,19 @@ if ($result=mysqli_query($conn,$sql))
 
 
 
+       }elseif($title == "nurse"){
+
+            session_start();
+             $_SESSION["user"] = $_GET["loginusername"];
+
+             if(isset($_SESSION["user"])){
+                  header("Location: nurse.php ");
+                  
+      
+             }else{
+                  header("Location: index.php ");
+             }
+
        }
 
 
