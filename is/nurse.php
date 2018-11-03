@@ -132,16 +132,28 @@ include 'dbconnect.php';
 
         </div>
 
-
-
-        <div class="rightcolumn">
-            <div class="card" id="scheduleappointment">
-
-            </div>
-
-        </div>
     </div>
 
+    
+
+<div class = "row">
+    <div class="rightcolumn">
+        <div class="card" id="appointmentupdate1">
+            <form>
+                    <div class="group">
+                            <label for="user" class="label">Patient ID</label><br>
+                            <input id="patientidupdate" type="text" name="patientid" class="input">
+                        </div>
+                    <div class="group">
+                            <label for="user" class="label">Patient Name</label><br>
+                            <input id="patientname" type="text" name="patientname" class="input">
+                        </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
 
 
 
@@ -162,6 +174,8 @@ include 'dbconnect.php';
         $('#viewinpatients').load('viewinpatientx.php');
         $("#viewinpatients").hide();
         $("#admitpatient").hide();
+        $("#hiddendiv2").hide();
+        $("#appointmentupdate1").hide();
 
 
 
@@ -183,10 +197,13 @@ include 'dbconnect.php';
         $("#viewinpatients").show();
         $("#admitpatient").hide();
 
+        //setting the values from the hidden form hiddendiv2 to be the same as the ones for admitting the patient
+
     }
     function funcx2() {
         $("#admitpatient").show();
         $("#viewinpatients").hide();
+        $("#appointmentupdate1").hide();
 
     }
 </script>

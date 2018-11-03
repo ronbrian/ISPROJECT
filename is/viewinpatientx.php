@@ -8,7 +8,7 @@ include 'dbconnect.php';
 
 
 
-$sql="SELECT `id`, `name`, `diagnosis`, `prescription`, `admission date`, `discharge date`, `duration`, `status`, `nurse`, `doctor` FROM `inpatient` ";
+$sql="SELECT `no`, `id`, `name`, `diagnosis`, `prescription`, `admission date`, `discharge date`, `duration`, `status`, `nurse`, `doctor` FROM `inpatient` ORDER BY no DESC;";
 
 $result = $conn->query($sql);
 /*   RETRIEVING APPOINTMENTS  */
@@ -56,6 +56,37 @@ while($row = $result->fetch_assoc()) {
     echo "Status : ".$status."<br>"; 
     echo "Nurse : ".$nurse."<br>"; 
     echo "Doctor : ".$doctor."<br>"; 
+
+
+
+    echo "<div id='hiddendiv2' <  style=''  >";
+    //echo "<form id = 'updateappointment$count' >";
+    
+    echo "<input id='patientid$count' value='$id'  />";
+    echo "<input id='patientname$count' value='$name'  />";
+    echo "<input id='diagnosis$count' value='$diagnosis'  />";
+    echo "<input id='prescription$count' value='$prescription' />";
+    echo "<input id='admissiondate$count' value='$admissiondate' />";
+    echo "<input id='dischargedate$count' value='$dischargedate' />";
+    echo "<input id='duration$count' value='$duration' />";
+    echo "<input id='status$count' value='$status' />";
+    echo "<input id='nurse$count' value='$nurse' />";
+    echo "<input id='doctor$count' value='$doctor' />";
+    echo "<button id='btnupdate' onclick='updateappointment$count()' > Admit Patient  </button> ";
+    echo "
+    <script>
+    function updateappointment$count(){
+        $('#appointmentupdate1').show();
+        document.getElementById('patientidupdate').value = document.getElementById('patientid$count').value;
+
+    }
+
+    </script>
+    
+    ";
+
+    //echo "</form>";
+    echo "</div> ";
     $count++;   
     echo " - - - - - - - - - - - - - - - - -<br>";
  
