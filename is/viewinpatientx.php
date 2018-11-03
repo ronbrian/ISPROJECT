@@ -59,8 +59,8 @@ while($row = $result->fetch_assoc()) {
 
 
 
-    echo "<div id='hiddendiv2' <  style=''  >";
-    //echo "<form id = 'updateappointment$count' >";
+    echo "<div>";
+    echo "<div id='hiddendiv2' <  style='visibility: hidden;'  >";
     
     echo "<input id='patientid$count' value='$id'  />";
     echo "<input id='patientname$count' value='$name'  />";
@@ -72,6 +72,7 @@ while($row = $result->fetch_assoc()) {
     echo "<input id='status$count' value='$status' />";
     echo "<input id='nurse$count' value='$nurse' />";
     echo "<input id='doctor$count' value='$doctor' />";
+    echo "</div>";
     echo "<button id='btnupdate' onclick='updateappointment$count()' > Admit Patient  </button> ";
     echo "
     <script>
@@ -93,7 +94,6 @@ while($row = $result->fetch_assoc()) {
     
     ";
 
-    //echo "</form>";
     echo "</div> ";
     $count++;   
     echo " - - - - - - - - - - - - - - - - -<br>";

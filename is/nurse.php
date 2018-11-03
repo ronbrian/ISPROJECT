@@ -63,7 +63,7 @@ include 'dbconnect.php';
 
 
 
-    <button id="admitpatientbtn" onclick = "funcx2()"> Admit Patient </button>
+    <button id="admitpatientbtn" onclick="funcx2()"> Admit Patient </button>
     <button id="viewinpatientsbtn" onclick="funcx1()"> Hospital Admissions </button>
     <button id="myBtn"> Call For Doctor </button>
     <button id="myBtn"> View Wards </button>
@@ -101,12 +101,12 @@ include 'dbconnect.php';
                             <input id="diagnosis" type="text" name="diagnosis" class="input">
                         </div>
 
-                       <div class="group">
+                        <div class="group">
                             <label for="user" class="label">Admission Date </label><br>
                             <input id="admissiondate" type="text" name="admissiondate" class="input">
                         </div>
 
-                       <div class="group">
+                        <div class="group">
                             <label for="user" class="label">Discharge Date </label><br>
                             <input id="dischargedate" type="text" name="dischargedate" class="input">
                         </div>
@@ -134,63 +134,68 @@ include 'dbconnect.php';
 
     </div>
 
-    
-
-<div class = "row">
-    <div class="rightcolumn">
-        <div class="card" id="appointmentupdate1">
-            <form>
-                    <div class="group">
-                            <label for="user" class="label">Patient ID</label><br>
-                            <input id="patientidupdate" type="text" name="patientidupdate" class="input">
-                    </div>
-                    <div class="group">
-                            <label for="user" class="label">Patient Name</label><br>
-                            <input id="patientnameupdate" type="text" name="patientnameupdate" class="input">
-                    </div>
-                    <div class="group">
-                            <label for="user" class="label">Diagnosis</label><br>
-                            <input id="diagnosisupdate" type="text" name="diagnosisupdate" class="input">
-                    </div>
-                    <div class="group">
-                            <label for="user" class="label">Prescription</label><br>
-                            <input id="prescriptionupdate" type="text" name="prescriptionupdate" class="input">
-                    </div><br>
-                    <div class="group">
-                            <label for="user" class="label">Admission Date </label><br>
-                            <input id="admissiondateupdate" type="date" name="admissiondateupdate" class="input">
-                    </div><br>
-                    <div class="group">
-                            <label for="user" class="label">Discharge Date </label><br>
-                            <input id="dischargedateupdate" type="date" name="dischargedateupdate"  class="input">
-                    </div><br>
-                    <div class="group">
-                            <label for="user" class="label">Duration in Days</label><br>
-                            <input id="durationupdate" type="text" name="durationupdate" class="input" onmouseover="myFunction()" >
-                    </div>
-                    <div class="group">
-                            <label for="user" class="label">Status</label><br>
-                            <input id="statusupdate" type="text" name="statusupdate"  class="input"  >
-                    </div>
-                    <div class="group">
-                            <label for="user" class="label">Nurse In - Charge </label><br>
-                            <input id="nurseupdate" type="text" name="nurseupdate" value = '<?php echo $_SESSION['user'] ?>' class="input">
-                    </div>
-                    <div class="group">
-                            <label for="user" class="label">Doctor In - Charge </label><br>
-                            <input id="doctorupdate" type="text" name="doctorupdate"  class="input">
-                    </div>
-                    <div class="group">
-                            <input  type="submit"  class="input">
-                    </div>
 
 
-            </form>
+    <div class="row">
+        <div class="rightcolumn">
+            <div class="card" id="appointmentupdate1">
+                <form>
+                    <div class="group">
+                        <label for="user" class="label">Patient ID</label><br>
+                        <input id="patientidupdate" type="text" name="patientidupdate" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Patient Name</label><br>
+                        <input id="patientnameupdate" type="text" name="patientnameupdate" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Diagnosis</label><br>
+                        <input id="diagnosisupdate" type="text" name="diagnosisupdate" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Prescription</label><br>
+                        <input id="prescriptionupdate" type="text" name="prescriptionupdate" class="input">
+                    </div><br>
+                    <div class="group">
+                        <label for="user" class="label">Admission Date </label><br>
+                        <input id="admissiondateupdate" type="date" name="admissiondateupdate" class="input">
+                    </div><br>
+                    <div class="group">
+                        <label for="user" class="label">Discharge Date </label><br>
+                        <input id="dischargedateupdate" type="date" name="dischargedateupdate" class="input">
+                    </div><br>
+                    <div class="group">
+                        <label for="user" class="label">Duration in Days</label><br>
+                        <input id="durationupdate" type="text" name="durationupdate" class="input" onmouseover="myFunction()">
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Ward No. </label><br>
+                        <input id="wardnoupdate" type="text" name="wardnoupdate" class="input" onkeyup="showHint(this.value)" ><br>
+                        <span id = "wardavailability"  > </span><br><br>
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Status</label><br>
+                        <input id="statusupdate" type="text" name="statusupdate" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Nurse In - Charge </label><br>
+                        <input id="nurseupdate" type="text" name="nurseupdate" value='<?php echo $_SESSION['user'] ?>'class="input">
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Doctor In - Charge </label><br>
+                        <input id="doctorupdate" type="text" name="doctorupdate" class="input">
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="input" onclick="myfunc3()" >
+                    </div>
+
+
+                </form>
+
+            </div>
 
         </div>
-
     </div>
-</div>
 
 
 
@@ -244,8 +249,8 @@ include 'dbconnect.php';
 
     }
 
-         //FUNCTION TO SUBTRACT THE DAYS FROM THE SELECTED DATES       
-        function myFunction() {
+    //FUNCTION TO SUBTRACT THE DAYS FROM THE SELECTED DATES       
+    function myFunction() {
         var date_diff_indays = function (date1, date2) {
             dt1 = new Date(date1);
             dt2 = new Date(date2);
@@ -256,8 +261,50 @@ include 'dbconnect.php';
         var xi = document.getElementById("dischargedateupdate").value;
 
         document.getElementById("durationupdate").value = date_diff_indays(x, xi);
-        
+
     }
+
+
+    function myfunc3() {
+
+
+        var xyz = document.getElementById("patientidupdate").value + "&patientname=" + document.getElementById("patientnameupdate").value + "&diagnosis=" + document.getElementById("diagnosisupdate").value + "&prescription=" + document.getElementById("prescriptionupdate").value + "&admissiondate=" + document.getElementById("admissiondateupdate").value + "&dischargedate=" + document.getElementById("dischargedateupdate").value + "&duration=" + document.getElementById("durationupdate").value + "&wardno=" + document.getElementById("wardnoupdate").value + "&status=" + document.getElementById("statusupdate").value + "&nurse=" + document.getElementById("nurseupdate").value+ "&doctor=" + document.getElementById("doctorupdate").value;
+        if (xyz.length == 0) {
+
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+
+                }
+            };
+            xmlhttp.open("GET", "updateinpatient.php?q=" + xyz, true);
+            xmlhttp.send();
+        }
+
+        alert(' Details have been sent for processing. ');
+    }
+
+
+            function showHint(str) {
+            if (str.length == 0) {
+                
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+
+                        document.getElementById("wardavailability").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "gethint.php?q=" + str, true);
+                xmlhttp.send();
+            }
+        }
+
 </script>
 
 
