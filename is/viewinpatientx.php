@@ -78,6 +78,14 @@ while($row = $result->fetch_assoc()) {
     function updateappointment$count(){
         $('#appointmentupdate1').show();
         document.getElementById('patientidupdate').value = document.getElementById('patientid$count').value;
+        document.getElementById('patientnameupdate').value = document.getElementById('patientname$count').value;
+        document.getElementById('diagnosisupdate').value = document.getElementById('diagnosis$count').value;
+        document.getElementById('prescriptionupdate').value = document.getElementById('prescription$count').value;
+        document.getElementById('admissiondateupdate').value = document.getElementById('admissiondate$count').value;
+        document.getElementById('dischargedateupdate').value = document.getElementById('dischargedate$count').value;
+         document.getElementById('statusupdate').value = document.getElementById('status$count').value;
+        //skipped the one for the nurse,,,, it will be obtained from the user session
+        document.getElementById('doctorupdate').value = document.getElementById('doctor$count').value;
 
     }
 

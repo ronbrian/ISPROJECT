@@ -142,12 +142,49 @@ include 'dbconnect.php';
             <form>
                     <div class="group">
                             <label for="user" class="label">Patient ID</label><br>
-                            <input id="patientidupdate" type="text" name="patientid" class="input">
-                        </div>
+                            <input id="patientidupdate" type="text" name="patientidupdate" class="input">
+                    </div>
                     <div class="group">
                             <label for="user" class="label">Patient Name</label><br>
-                            <input id="patientname" type="text" name="patientname" class="input">
-                        </div>
+                            <input id="patientnameupdate" type="text" name="patientnameupdate" class="input">
+                    </div>
+                    <div class="group">
+                            <label for="user" class="label">Diagnosis</label><br>
+                            <input id="diagnosisupdate" type="text" name="diagnosisupdate" class="input">
+                    </div>
+                    <div class="group">
+                            <label for="user" class="label">Prescription</label><br>
+                            <input id="prescriptionupdate" type="text" name="prescriptionupdate" class="input">
+                    </div><br>
+                    <div class="group">
+                            <label for="user" class="label">Admission Date </label><br>
+                            <input id="admissiondateupdate" type="date" name="admissiondateupdate" class="input">
+                    </div><br>
+                    <div class="group">
+                            <label for="user" class="label">Discharge Date </label><br>
+                            <input id="dischargedateupdate" type="date" name="dischargedateupdate"  class="input">
+                    </div><br>
+                    <div class="group">
+                            <label for="user" class="label">Duration in Days</label><br>
+                            <input id="durationupdate" type="text" name="durationupdate" class="input" onmouseover="myFunction()" >
+                    </div>
+                    <div class="group">
+                            <label for="user" class="label">Status</label><br>
+                            <input id="statusupdate" type="text" name="statusupdate"  class="input"  >
+                    </div>
+                    <div class="group">
+                            <label for="user" class="label">Nurse In - Charge </label><br>
+                            <input id="nurseupdate" type="text" name="nurseupdate" value = '<?php echo $_SESSION['user'] ?>' class="input">
+                    </div>
+                    <div class="group">
+                            <label for="user" class="label">Doctor In - Charge </label><br>
+                            <input id="doctorupdate" type="text" name="doctorupdate"  class="input">
+                    </div>
+                    <div class="group">
+                            <input  type="submit"  class="input">
+                    </div>
+
+
             </form>
 
         </div>
@@ -205,6 +242,21 @@ include 'dbconnect.php';
         $("#viewinpatients").hide();
         $("#appointmentupdate1").hide();
 
+    }
+
+         //FUNCTION TO SUBTRACT THE DAYS FROM THE SELECTED DATES       
+        function myFunction() {
+        var date_diff_indays = function (date1, date2) {
+            dt1 = new Date(date1);
+            dt2 = new Date(date2);
+            return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) / (1000 * 60 * 60 * 24));
+        }
+
+        var x = document.getElementById("admissiondateupdate").value;
+        var xi = document.getElementById("dischargedateupdate").value;
+
+        document.getElementById("durationupdate").value = date_diff_indays(x, xi);
+        
     }
 </script>
 

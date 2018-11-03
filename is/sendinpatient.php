@@ -23,7 +23,8 @@ $period =  $_REQUEST["period"];
 $diagnosis =  $_REQUEST["diagnosis"]; 
 $prescription =  $_REQUEST["prescription"]; 
 $notes =  $_REQUEST["notes"]; 
-$doctor =  $_REQUEST["doctor"]; 
+$doctor =  $_REQUEST["doctor"];
+$status = "Not Admitted"; 
 //$time;
 
 
@@ -34,7 +35,7 @@ $doctor =  $_REQUEST["doctor"];
 
 
 
-$sql = "INSERT INTO `inpatient`(`id`, `name`, `diagnosis`, `prescription`, `doctor`) VALUES ('$id','$name','$diagnosis','$prescription','$doctor')";
+$sql = "INSERT INTO `inpatient`(`id`, `name`, `diagnosis`, `prescription`, `doctor`, `status`) VALUES ('$id','$name','$diagnosis','$prescription','$doctor', '$status')";
 
 if ($conn->query($sql) === TRUE) {
 
