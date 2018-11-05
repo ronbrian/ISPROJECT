@@ -31,17 +31,7 @@ while($row = $result->fetch_assoc()) {
     $nurse = $row["nurse"];
     $doctor = $row["doctor"];
 
-    if($status == 0){
-        $status = "Not Admitted";
-
-    }elseif($status == 1){
-        $status = "Admitted";
-
-    }elseif($status == 2){
-        $status = "Discharged";
-    }else{
-        $status = "***";
-    }
+    
     
 
     

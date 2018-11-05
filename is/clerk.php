@@ -135,12 +135,19 @@ include 'dbconnect.php';
             }
             
             $_SESSION["unread"] =$unread ;
+            if($_SESSION["unread"] > 0 ){
+
+                $notificationdot = " class = 'badge1' data-badge=$unread ";
+
+            }else{
+                $notificationdot =null;
+            }
        
                 
     ?>
 
     <button id="myBtn" > Register Patient </button>
-    <button id="viewappoints" onclick="viewappoints()" class="badge1" data-badge="<?php echo $_SESSION["unread"]; ?>"> View Appointments </button>
+    <button id="viewappoints" onclick="viewappoints()" <?php echo $notificationdot ?> > View Appointments </button>
     <button> Schedule Appointment </button>
 
 
@@ -163,7 +170,7 @@ include 'dbconnect.php';
 
                               
                             </div>
-                          </div>
+                    </div>
 
             </div>
 
