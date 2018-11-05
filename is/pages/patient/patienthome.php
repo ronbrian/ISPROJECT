@@ -60,8 +60,9 @@ include '../../dbconnect.php';
 
 
     <br>
-    <?php echo "Welcome " . $_SESSION["user"]; ?> &nbsp;&nbsp;&nbsp; <button> Chat with a Doctor </button>&nbsp;&nbsp;
-    <button> Emergency </button>&nbsp;&nbsp;
+
+    <?php echo "Welcome " . $_SESSION["user"]; ?> &nbsp;&nbsp;&nbsp; 
+    <button id="chatdoctorbtn" onclick="chatdoctor()" > Chat with a Doctor </button>&nbsp;&nbsp;
     <button id="book" onclick="bookappointment()"> Book an Appointment </button><br>
     <button id="goback" onclick="goback() "> Display Previous Medical Info </button><br>
 
@@ -137,6 +138,10 @@ include '../../dbconnect.php';
 
             </div>
 
+            <div class="card" id="chatdoctor">
+
+            </div>
+
 
         </div>
 
@@ -164,8 +169,13 @@ include '../../dbconnect.php';
         //$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
         $('#patientdetails').load('fetchpatient.php');
         $('#medicalinfo').load('fetchmedicalinfox.php');
+        $('#chatdoctor').load('chat.php');
+        setInterval(function () {
+                                    $('#chatdoctor').load('chat.php');
+                            }, 10000); 
         $("#appointment").hide();
         $("#goback").hide();
+        $("#chatdoctor").hide();
 
 
 
@@ -224,7 +234,11 @@ include '../../dbconnect.php';
         alert(' Thankyou \n.We have recorded your Appointment.');
     }
 
+function chatdoctor(){
+    $("#patientdetails").hide();
+    $("#chatdoctor").show();
 
+}
 
  
 

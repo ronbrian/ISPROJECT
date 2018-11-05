@@ -6,8 +6,8 @@ include '../../dbconnect.php';
 
 
 $patientid = $_SESSION["userid"];
-
-$sql="SELECT `symptoms`, `period`, `diagnosis`, `prescription`, `notes`, `doctor`, `date`, `hospital` FROM `medical info` WHERE `id` = '$patientid'";
+//ORDER BY expression [ ASC | DESC ];
+$sql="SELECT `no`, `symptoms`, `period`, `diagnosis`, `prescription`, `notes`, `doctor`, `date`, `hospital` FROM `medical info` WHERE `id` = '$patientid' ORDER BY `no` DESC ";
 
 $result = $conn->query($sql);
 /*   RETRIEVING PATIENT DETAILS   */
@@ -32,7 +32,9 @@ while($row = $result->fetch_assoc()) {
     echo "Diagnosis : ".$diagnosis."<br>";    
     echo "Prescribed Drugs : ".$prescription."<br>";    
     echo "Notes : ".$notes."<br>";    
-    echo "Doctor : Dr.".$doctor."<br>";    
+    echo "Doctor : Dr.".$doctor."<br>";  
+    echo "<input style = 'visibility: hidden;' id='doctor".$count."'  value = '".$doctor."'><br>";  
+      
     echo "Hospital :".$hospital."<br>";    
     echo "Date : ".$date."<br>";
     echo "<br>- - - - - - - - - - - - - - - - - - - -<br>";

@@ -4,13 +4,6 @@ include '../../dbconnect.php';
 
 
 
-
-
-//$appointmentdate = $_GET["appointmentdate"];
-//$appointmenttime = $_GET["appointmenttime"];
-//$service = $_GET["service"];
-
-
 $userid = $_SESSION["userid"];
 $name = $_SESSION["user"];
 $currenttime = $time;
@@ -37,20 +30,6 @@ if ($conn->query($sql) === TRUE) {
 
 
 }
-
-
-
-/*
-$userid = $_SESSION["userid"];
-$name = $_SESSION["user"];
-$currenttime = $time;
-
-
-$appointmentdate = $_REQUEST["q"]; 
-$appointmenttime = $_REQUEST["appointmenttime"];
-$service = $_REQUEST["service"];
-
-*/
 
 
 

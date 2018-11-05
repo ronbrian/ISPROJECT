@@ -148,7 +148,7 @@ include 'dbconnect.php';
 
     <button id="myBtn" > Register Patient </button>
     <button id="viewappoints" onclick="viewappoints()" <?php echo $notificationdot ?> > View Appointments </button>
-    <button> Schedule Appointment </button>
+    <button onclick="scheduleappoint()" > Schedule Appointment </button>
 
 
 
@@ -184,6 +184,50 @@ include 'dbconnect.php';
 
         <div class="rightcolumn">
             <div class="card" id="scheduleappointment">
+                <form action="">
+                    <div>
+
+                        
+                            <div class="group">
+                                    <label for="user" class="label"> Patient Name : </label>
+                                    <input id="appointname" type="text" name="appointname" class="input">
+                                </div><br>
+
+                        <div class="group">
+                            <label for="user" class="label"> At Which Date would you like to schedule your appointment? </label>
+                            <input id="appointmentdate" type="date" name="appointmentdate" class="input">
+                        </div><br>
+
+                        <div class="group">
+                            <label for="user" class="label"> At What Time : </label>
+                            <input id="appointmenttime" type="time" name="appointmenttime" class="input">
+                        </div><br>
+
+                        <div class="group">
+                            <label for="user" class="label"> Select the service of choice : </label>
+                            <!--<input id="service" type="text" name="service" class="input">-->
+                            <select name="service" id="thedropdown">
+                                <option value="Doctor Consultation" selected>Doctor Consultation</option>
+                                <option value="Dental">Dental</option>
+                                <option value="Paediatric">Paediatric</option>
+                                <option value="Laboratory Tests">Laboratory Tests</option>
+                                <option value="Physiotherapy">Physiotherapy </option>
+                                <option value="Prescription Refill">Prescription Refill </option>
+                                <option value="Regular Health Check Up"> Regular Health Check Up </option>
+                                <option value="Other"> Other </option>
+                            </select>
+                        </div><br>
+
+
+
+
+
+
+                        <div class="group">
+                            <input type="submit" class="button" value="Submit" onclick="scheduleappointment()">
+                        </div>
+                    </div>
+                </form>
             </div>
 
         </div>
@@ -207,6 +251,7 @@ include 'dbconnect.php';
         //$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
         $('#viewappointments').load('viewappointmentsx.php');
         $("#viewappointments").hide();
+        $("#scheduleappointment").hide();
 
         //$("#patientdetails").show();
         
@@ -216,10 +261,39 @@ include 'dbconnect.php';
     });
 
 
+    function scheduleappoint(){
+        $("#scheduleappointment").show();
+
+    }
 
     function viewappoints(){
         $("#viewappointments").show();
     }
+
+    
+    function scheduleappointment(){
+
+    var xyz = document.getElementById("appointname").value + "&appointmentdate=" + document.getElementById("appointmentdate").value + "&appointmenttime=" + document.getElementById("appointmenttime").value + "&service=" + "Doctor Consultation" ;
+    if (xyz.length == 0) {
+
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+
+            }
+        };
+        xmlhttp.open("GET", "saveappointment.php?q=" + xyz, true);
+        xmlhttp.send();
+    }
+
+    alert(' Appointment has been scheduled ');
+    }
+
+
+    
 // ]]>
 
 
@@ -256,6 +330,9 @@ include 'dbconnect.php';
             modal.style.display = "none";
         }
     }
+
+
+
 </script>
 
 

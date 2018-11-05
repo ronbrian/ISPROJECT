@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include 'dbconnect.php';
+$doctorid = $_SESSION["user"];
 ?>
 
 <!DOCTYPE html>
@@ -15,9 +16,70 @@ include 'dbconnect.php';
     <!-- EXTERNAL CSS -->
     <meta content='width=device-width, initial-scale=1' name='viewport' />
     <title> *** </title>
+    <style>
+                                body {font-family: Arial, Helvetica, sans-serif;}
+                                
+                                /* The Modal (background) */
+                                .modal {
+                                    display: none; /* Hidden by default */
+                                    position: fixed; /* Stay in place */
+                                    z-index: 1; /* Sit on top */
+                                    padding-top: 100px; /* Location of the box */
+                                    left: 0;
+                                    top: 0;
+                                    width: 100%; /* Full width */
+                                    height: 100%; /* Full height */
+                                    overflow: auto; /* Enable scroll if needed */
+                                    background-color: rgb(0,0,0); /* Fallback color */
+                                    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                                }
+                                
+                                /* Modal Content */
+                                .modal-content {
+                                    background-color: rgba(32, 35, 44, 0.9);
+                                    margin: auto;
+                                    padding: 20px;
+                                    border: 0.001px solid #888;
+                                    width: 30%;
+                                    height: 500%;
+                                    float: none;
+                                }
+                                
+                                /* The Close Button */
+                                .close {
+                                    color: #aaaaaa;
+                                    float: right;
+                                    font-size: 28px;
+                                    font-weight: bold;
+                                }
+                                
+                                .close:hover,
+                                .close:focus {
+                                    color: #000;
+                                    text-decoration: none;
+                                    cursor: pointer;
+                                }
 
+
+                                    .badge1 {
+                    position:relative;
+                    }
+                    .badge1[data-badge]:after {
+                    content:attr(data-badge);
+                    position:absolute;
+                    top:-10px;
+                    right:-10px;
+                    font-size:.7em;
+                    background:red;
+                    color:white;
+                    width:18px;height:18px;
+                    text-align:center;
+                    line-height:18px;
+                    border-radius:50%;
+                    box-shadow:0 0 1px #333;
+                    }
+    </style>
 </head>
-
 <body>
 
     <div class="header">
@@ -52,9 +114,34 @@ include 'dbconnect.php';
         <a href="https://www.google.com">&nbsp;&nbsp;&nbsp; Link 6</a>
 
     </div>
+    <?php
+            //GETTING TOTAL NUMBER OF CHATS WHICH HAVENT BEEN VIEWED SO THAT THEY CAN BE PROJECTED ON THE NOTIFICATION DOT
+            $sql2 ="SELECT COUNT(*) AS `count` FROM `messages` WHERE `viewed`=0 AND `doctor`='$doctorid' AND `type`='senttodoctor' ";
+            $result = $conn->query($sql2);
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                $unread =  $row["count"];
+                
+                
+            }
+            }else{
+            }
+            
+            $_SESSION["unread"] =$unread ;
+            if($_SESSION["unread"] > 0 ){
 
+                $notificationdot = " class = 'badge1' data-badge=$unread ";
 
+            }else{
+                $notificationdot =null;
+            }
+       
+                
+    ?>
 
+    <button id="chatpatientbtn" onclick="chatpatient()" <?php echo $notificationdot ?> > Patient Chats </button>&nbsp;&nbsp;
+
+<span>Welcome <?php echo $doctorid; ?> </span>
 
     <div class="row">
         <div class="leftcolumn">
@@ -198,14 +285,114 @@ include 'dbconnect.php';
                         <label for="" class="label"> Cancel </label><br>
 
                     </div>
-
+          
 
 
 
                 </form>
 
             </div>
+
+            <div id="patientchats1" class = "card" >
+                <?php
+
+                        $sql = "  SELECT DISTINCT  `id` FROM `messages` WHERE `doctor` = '$doctorid'  ";
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                        
+                        echo "  <select name='service' id='thedropdown'>  ";
+                        while($row = $result->fetch_assoc()) {
+                            
+                            $id =  $row["id"];
+
+                            echo "
+                            
+                            
+                                <option value='$id'> $id </option>
+
+
+                            
+
+                            
+                            
+                            ";
+
+   
+
+                       
+
+                        }
+
+
+                        echo" </select>  ";
+                        echo" <input id='jkl'><br><input id='doctorsid' value='$doctorid' /> ";
+
+                        echo" <button id='selectbtn' onclick = 'selectpatient()' > Select </button>  ";
+                        echo "
+                            <script>
+                             function selectpatient(){
+                                var e = document.getElementById('thedropdown');
+                                var chosenpatient = e.options[e.selectedIndex].value;
+                                document.getElementById('jkl').value = chosenpatient;
+                                setsession();
+                                           function setsession(){
+
+                                               var xyz = chosenpatient;
+                                               if (xyz.length == 0) {
+
+                                                   return;
+                                               } else {
+                                                   var xmlhttp = new XMLHttpRequest();
+                                                   xmlhttp.onreadystatechange = function () {
+                                                       if (this.readyState == 4 && this.status == 200) {
+
+
+                                                       }
+                                                   };
+                                                   xmlhttp.open('GET', 'setsession.php?q=' + xyz, true);
+                                                   xmlhttp.send();
+                                               }
+
+                                           }
+                               
+                                $('#patientchats2').load('chat.php');
+                                setInterval(function () {
+                                    $('#patientchats2').load('chat.php');
+                            }, 10000); 
+            
+                             }
+
+
+
+
+                            </script>
+                        
+                        
+                        ";
+                        
+                            } else {
+
+                            //nothing goes here
+
+                        }
+
+
+                ?>
+
+            </div>
+
+            <div class="card" id="patientchats2" >
+
+            </div>
+
+
         </div>
+
+
+
+
+
     </div>
 
 
@@ -239,6 +426,7 @@ include 'dbconnect.php';
 </script>
 
 <script>
+
     function hiding() {
 
         $("#patientdetails").hide();
@@ -374,8 +562,8 @@ include 'dbconnect.php';
 
 
 
-
 </script>
+
 
 
 

@@ -194,7 +194,7 @@ include 'dbconnect.php';
                     </div>
                     <div class="group">
                         <label for="user" class="label">Nurse In - Charge </label><br>
-                        <input id="nurseupdate" type="text" name="nurseupdate" value='<?php echo $_SESSION[' user'] ?>'class="input">
+                        <input id="nurseupdate" type="text" name="nurseupdate" value='<?php echo $_SESSION['user'] ?>'class="input">
                     </div>
                     <div class="group">
                         <label for="user" class="label">Doctor In - Charge </label><br>
