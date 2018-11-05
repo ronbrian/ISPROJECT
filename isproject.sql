@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 30, 2018 at 10:45 PM
+-- Generation Time: Nov 05, 2018 at 08:57 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -54,7 +54,16 @@ INSERT INTO `appointments` (`no`, `user id`, `name`, `current time`, `appointmen
 (28, 1738, 'Mary Wambui', '2018/10/20/10:23', '2018-10-11', '15:58', 'Doctor Consultation', '', 1),
 (29, 36941325, 'Ron Brian', '2018/10/25/06:15', '2018-10-19', '04:01', 'Laboratory Tests', '', 1),
 (30, 0, '', '', '', '', '', '', 1),
-(31, 36941325, 'Ron Brian', '2018/10/25/06:19', '2018-10-17', '02:58', 'Physiotherapy', '', 1);
+(31, 36941325, 'Ron Brian', '2018/10/25/06:19', '2018-10-17', '02:58', 'Physiotherapy', '', 1),
+(32, 36941325, 'Ron Brian', '2018/11/01/10:21', '2018-11-07', '03:59', 'Prescription Refill', '', 1),
+(33, 3, 'Test User 3', '2018/11/04/10:44', '2018-11-04', '01:59', 'Paediatric', '', 1),
+(34, 36941325, 'Ron Brian', '2018/11/04/10:53', '2018-11-04', '', 'Laboratory Tests', '', 1),
+(35, 36941325, 'Ron Brian', '2018/11/04/10:53', '2018-11-04', '11:00', 'Laboratory Tests', '', 1),
+(36, 36941325, 'Ron Brian', '2018/11/04/11:06', '2018-11-14', '02:59', 'Laboratory Tests', '', 1),
+(37, 36941325, 'Ron Brian', '2018/11/04/11:07', '2018-10-29', '', 'Regular Health Check', '', 1),
+(38, 36941325, 'Ron Brian', '2018/11/04/11:08', '2018-10-17', '15:01', 'Regular Health Check', '', 1),
+(39, 36941325, 'Ron Brian', '2018/11/04/11:20', '2018-11-04', '02:59', 'Doctor Consultation', '', 1),
+(40, 0, 'Nobody', '', '2018-11-05', '02:59', 'Doctor Consultation', '', 1);
 
 -- --------------------------------------------------------
 
@@ -72,32 +81,21 @@ CREATE TABLE `inpatient` (
   `discharge date` varchar(100) NOT NULL,
   `duration` varchar(100) NOT NULL,
   `ward no` varchar(100) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '0',
+  `status` varchar(50) NOT NULL,
   `nurse` text NOT NULL,
-  `doctor` text NOT NULL
+  `nurse notes` varchar(240) NOT NULL,
+  `doctor` text NOT NULL,
+  `isactive` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `inpatient`
 --
 
-INSERT INTO `inpatient` (`no`, `id`, `name`, `diagnosis`, `prescription`, `admission date`, `discharge date`, `duration`, `ward no`, `status`, `nurse`, `doctor`) VALUES
-(6, 36941325, 'Ron Brian', 'Migraines', 'Panadol', '', '', '', '', 1, '', 'mjuma'),
-(7, 12345678, 'James Mwangi', 'mo', 'om', '', '', '', '', 0, '', 'mjuma'),
-(8, 12345678, 'James Mwangi', '', '', '', '', '', '', 2, '', 'mjuma'),
-(9, 12345678, 'James Mwangi', '', '', '', '', '', '', 0, '', 'mjuma'),
-(10, 3, 'Test User 3', '', 'ffbfbf', '', '', '', '', 0, '', 'mjuma'),
-(11, 36941325, 'Ron Brian', 'finale', 'finale', '', '', '', '', 0, '', 'mjuma'),
-(12, 12345678, 'James Mwangi', '        document.getElementById(\"medicalinfox\").submit();', '        document.getElementById(\"medicalinfox\").submit();', '', '', '', '', 0, '', 'mjuma'),
-(13, 36941325, '//', '//', '//', '', '', '', '', 0, '', '//'),
-(14, 0, '//', '//', '//', '', '', '', '', 0, '', '//'),
-(15, 0, '//', '//', '//', '', '', '', '', 0, '', '//'),
-(16, 3, 'Test User 3', 'notin', 'notin', '', '', '', '', 0, '', 'mjuma'),
-(17, 36941325, 'Ron Brian', 'cvb', 'cvb', '', '', '', '', 0, '', 'mjuma'),
-(18, 12345678, 'James Mwangi', 'test', 'test', '', '', '', '', 0, '', 'mjuma'),
-(19, 36941325, 'Ron Brian', 'pre', 'pre', '', '', '', '', 0, '', 'mjuma'),
-(20, 12345678, 'James Mwangi', '', '', '', '', '', '', 0, '', 'mjuma'),
-(21, 36941325, 'fffffff', 'Migraines', '', 'gfg', 'fgfg', 'fgfg', 'fgff', 0, 'bnjogu', '');
+INSERT INTO `inpatient` (`no`, `id`, `name`, `diagnosis`, `prescription`, `admission date`, `discharge date`, `duration`, `ward no`, `status`, `nurse`, `nurse notes`, `doctor`, `isactive`) VALUES
+(26, 36941325, 'Ron Brian', 'Migraines', 'Pain Killers and Anti -Bacterials', '2018-11-04', '2018-11-15', '11', '1', 'Admitted', 'bnjogu', '', 'mjuma', 1),
+(27, 999, 'Jim Boyd', 'Migraines', 'Pain Killers and Anti -Bacterials', '2018-11-04', '2018-11-15', '11', '2', 'Admitted', 'bnjogu', 'Been admitted', 'mjuma', 1),
+(28, 12345678, 'James Mwangi', 'Ulcers', 'Anti - Acid Tablets', '2018-11-05', '2018-11-15', '10', '3', 'Discharged', 'bnjogu', '', 'jmwangi', 0);
 
 -- --------------------------------------------------------
 
@@ -298,7 +296,29 @@ INSERT INTO `logs` (`no`, `id`, `time`, `doctor`) VALUES
 (403, 36941325, '2018/10/29/10:59', 'mjuma'),
 (404, 12345678, '2018/10/29/11:04', 'mjuma'),
 (405, 36941325, '2018/10/30/10:56', 'mjuma'),
-(406, 36941325, '2018/10/31/12:13', 'mjuma');
+(406, 36941325, '2018/10/31/12:13', 'mjuma'),
+(407, 12345678, '2018/11/01/10:23', 'mjuma'),
+(408, 3, '2018/11/03/04:51', 'mjuma'),
+(409, 3, '2018/11/03/04:51', 'mjuma'),
+(410, 36941325, '2018/11/04/11:47', 'mjuma'),
+(411, 3, '2018/11/04/11:52', 'bnjogu'),
+(412, 3, '2018/11/04/11:52', 'bnjogu'),
+(413, 36941325, '2018/11/05/01:09', 'mjuma'),
+(414, 36941325, '2018/11/05/03:26', ''),
+(415, 36941325, '2018/11/05/03:26', ''),
+(416, 36941325, '2018/11/05/03:27', 'mjuma'),
+(417, 36941325, '2018/11/05/03:29', 'mjuma'),
+(418, 36941325, '2018/11/05/03:32', 'mjuma'),
+(419, 36941325, '2018/11/05/05:33', 'jmwangi'),
+(420, 36941325, '2018/11/05/05:35', 'jmwangi'),
+(421, 3, '2018/11/05/05:38', 'jmwangi'),
+(422, 1738, '2018/11/05/08:54', 'jmwangi'),
+(423, 999, '2018/11/05/08:57', 'jmwangi'),
+(424, 12345678, '2018/11/05/10:44', 'jmwangi'),
+(425, 999, '2018/11/05/10:50', 'mjuma'),
+(426, 12345678, '2018/11/05/10:51', 'mjuma'),
+(427, 36941325, '2018/11/05/10:51', 'mjuma'),
+(428, 3, '2018/11/05/10:52', 'mjuma');
 
 -- --------------------------------------------------------
 
@@ -343,13 +363,59 @@ INSERT INTO `medical info` (`no`, `id`, `symptoms`, `period`, `diagnosis`, `pres
 (40, 3, '', '', '', '', '', 'mjuma', '2018/10/27/11:44', 'Kenyatta National Hospital'),
 (41, 3, '', '', '', '', '', 'mjuma', '2018/10/27/11:48', 'Kenyatta National Hospital'),
 (42, 36941325, 'id=\"medicalinfo\"', 'id=\"medicalinfo\"', 'id=\"medicalinfo\"', '', 'id=\"medicalinfo\"', 'mjuma', '2018/10/27/11:58', 'Kenyatta National Hospital'),
-(43, 3, 'notin', 'notin', 'notin', 'notin', 'vnotin', 'mjuma', '2018/10/29/10:46', 'Kenyatta National Hospital'),
-(44, 36941325, 'cvb', 'cvb', 'cvb', 'cvb', 'cvb', 'mjuma', '2018/10/29/10:55', 'Kenyatta National Hospital'),
-(45, 12345678, 'test', 'test', 'test', 'test', 'test', 'mjuma', '2018/10/29/10:56', 'Kenyatta National Hospital'),
-(46, 36941325, 'old', 'old', 'old', '', 'old', 'mjuma', '2018/10/29/10:56', 'Kenyatta National Hospital'),
-(47, 12345678, 'pre', 'pre', 'pre', 'pre', 'pre', 'mjuma', '2018/10/29/10:58', 'Kenyatta National Hospital'),
-(48, 36941325, 'pre', 'pre', 'pre', 'pre', 'pre', 'mjuma', '2018/10/29/10:59', 'Kenyatta National Hospital'),
-(49, 12345678, '', '', '', '', '', 'mjuma', '2018/10/29/11:04', 'Kenyatta National Hospital');
+(49, 12345678, '', '', '', '', '', 'mjuma', '2018/10/29/11:04', 'Kenyatta National Hospital'),
+(50, 12345678, '', '', '', '', '', 'mjuma', '2018/11/01/10:23', 'Kenyatta National Hospital'),
+(51, 3, '', '', '', '', '', 'mjuma', '2018/11/03/04:51', 'Kenyatta National Hospital'),
+(52, 3, '', '', '', '', '', 'mjuma', '2018/11/03/04:51', 'Kenyatta National Hospital'),
+(53, 36941325, 'Headache', '2 weeks', 'Migraines', 'Pain Killers and Anti -Bacterials', 'none', 'mjuma', '2018/11/04/11:47', 'Kenyatta National Hospital'),
+(54, 3, 'qqqqqqqqqqqqq', 'zzzzzzzz', 'zzzzzzzz', '', '', 'bnjogu', '2018/11/04/11:52', 'Kenyatta National Hospital'),
+(55, 3, 'Nausea, Blurry Vision', '6 Months', 'Malaria', 'Anti - Malarial', 'none', 'jmwangi', '2018/11/05/05:39', 'Kenyatta National Hospital'),
+(56, 999, 'Fever, Chills, Cough', '3 days', 'Malaria', 'Anti', 'Take after meals', 'jmwangi', '2018/11/05/08:59', 'Kenyatta National Hospital'),
+(57, 12345678, 'Stomach Problems', '4 Months', 'Ulcers', 'Anti - Acid Tablets', 'Consume with plenty of Water', 'jmwangi', '2018/11/05/10:44', 'Kenyatta National Hospital'),
+(58, 999, 'Headache', '2 weeks', 'Migraines', '', '', 'mjuma', '2018/11/05/10:51', 'Kenyatta National Hospital'),
+(59, 12345678, 'Headache', '2 weeks', 'Migraines', '', '', 'mjuma', '2018/11/05/10:51', 'Kenyatta National Hospital'),
+(60, 36941325, 'Stomach Ache', '3 days', 'Ulcers', '', '', 'mjuma', '2018/11/05/10:51', 'Kenyatta National Hospital'),
+(61, 36941325, 'Headache, Joint Pains', '', 'Malaria', '', '', 'mjuma', '2018/11/05/10:52', 'Kenyatta National Hospital'),
+(62, 3, 'Headache', '2 weeks', 'Malaria', '', '', 'mjuma', '2018/11/05/10:52', 'Kenyatta National Hospital');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `no` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `time` varchar(20) NOT NULL,
+  `post` varchar(250) NOT NULL,
+  `type` text NOT NULL,
+  `doctor` varchar(20) NOT NULL,
+  `viewed` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`no`, `id`, `time`, `post`, `type`, `doctor`, `viewed`) VALUES
+(58, 36941325, '2018/11/05/05:30', 'Hello', 'senttodoctor', 'mjuma', 0),
+(59, 36941325, '2018/11/05/05:30', 'Whatsup ?', 'senttopatient', 'mjuma', 1),
+(60, 36941325, '2018/11/05/05:31', 'Are you good?', 'senttopatient', 'mjuma', 1),
+(61, 36941325, '2018/11/05/05:31', 'yes i am', 'senttodoctor', 'mjuma', 0),
+(62, 36941325, '2018/11/05/05:32', 'see you at you next appointment', 'senttopatient', 'mjuma', 1),
+(63, 36941325, '2018/11/05/05:32', 'sure ... i will show up', 'senttodoctor', 'mjuma', 0),
+(64, 3, '2018/11/05/05:42', 'Hello Doctor', 'senttodoctor', 'jmwangi', 1),
+(65, 3, '2018/11/05/05:43', 'Hi Patient Number 3, How can i help you ?', 'senttopatient', 'jmwangi', 1),
+(66, 3, '2018/11/05/05:43', 'I am not feeling well...', 'senttodoctor', 'jmwangi', 1),
+(67, 3, '2018/11/05/05:43', 'Sorry', 'senttopatient', 'jmwangi', 1),
+(68, 3, '2018/11/05/05:50', 'you still there ?', 'senttopatient', 'jmwangi', 1),
+(69, 3, '2018/11/05/05:51', '??', 'senttopatient', 'jmwangi', 1),
+(70, 36941325, '2018/11/05/05:53', '***', 'senttodoctor', 'mjuma', 0),
+(72, 3, '2018/11/05/06:14', 'bye', 'senttopatient', 'jmwangi', 1),
+(75, 999, '2018/11/05/09:09', 'Hey', 'senttodoctor', 'jmwangi', 1),
+(76, 999, '2018/11/05/09:11', '', 'senttopatient', 'jmwangi', 1),
+(77, 999, '2018/11/05/09:12', '', 'senttodoctor', 'jmwangi', 0);
 
 -- --------------------------------------------------------
 
@@ -377,9 +443,10 @@ INSERT INTO `patient` (`no`, `name`, `age`, `id`, `tel`, `email`, `gender`, `pas
 (3, 'Ron Brian', 19, '36941325', 704814222, 'ronmachoka@gmail.com', 'M', 'qwerty', 0),
 (4, 'James Mwangi', 23, '12345678', 788787664, 'james@strathmore.edu', 'M', '0', 0),
 (5, 'Test User 1', 40, '87654321', 777889874, 'testuser@gmail.com', 'M', '0', 0),
-(8, 'Test User 3', 8, '3', 0, '', 'M', '0', 0),
+(8, 'Test User 3', 8, '3', 0, '', 'M', 'qwerty', 0),
 (9, 'Stacy', 29, '99', 766758443, 'stacy@gmail.com', 'F', '0', 0),
-(10, 'Mary Wambui', 34, '1738', 788688584, 'mwambui@gmail.com', 'F', 'qwerty', 0);
+(10, 'Mary Wambui', 34, '1738', 788688584, 'mwambui@gmail.com', 'F', 'qwerty', 0),
+(11, 'Jim Boyd', 19, '999', 722378654, 'asd@gmail.com', 'M', 'qwerty', 0);
 
 -- --------------------------------------------------------
 
@@ -406,9 +473,10 @@ INSERT INTO `patient record` (`no`, `id`, `height`, `weight`, `bmi`, `blood pres
 (1, 36941325, 2, 66, '16.50', 84, 'NONE', '2018/10/04/04:31'),
 (2, 12345678, 2, 23, '0.00', 88, 'NONE', '2018/10/04/04:31'),
 (4, 87654321, 2, 98, '22.00', 80, 'None', '2018/10/07/08:43'),
-(7, 3, 76, 56, '30.65', 88, 'none', '2018/10/07/08:45'),
+(7, 3, 76, 56, '0.01', 88, 'none', '2018/10/07/08:45'),
 (8, 99, 2, 64, '0.00', 56, 'NONE', '2018/10/14/12:33'),
-(9, 1738, 1.5, 82, '0.55', 84, 'NONE', '2018/10/20/09:14');
+(9, 1738, 1.5, 82, '0.55', 84, 'NONE', '2018/10/20/09:14'),
+(10, 999, 1.9, 76, '0.40', 175, 'High Cholestrol levels', '2018/11/05/08:57');
 
 -- --------------------------------------------------------
 
@@ -421,18 +489,20 @@ CREATE TABLE `staff` (
   `username` varchar(100) NOT NULL,
   `ID` int(10) NOT NULL,
   `title` text NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `isactive` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`Name`, `username`, `ID`, `title`, `password`) VALUES
-('James Mwangi', 'jmwangi', 1, 'doctor', '123'),
-('Hellen Njoki', 'hnjoki', 2, 'clerk', 'qwe'),
-('mzee juma', 'mjuma', 3, 'doctor', 'zxc'),
-('Brian Njogu', 'bnjogu', 4, 'nurse', 'asd');
+INSERT INTO `staff` (`Name`, `username`, `ID`, `title`, `password`, `isactive`) VALUES
+('James Mwangi', 'jmwangi', 1, 'doctor', '123', 1),
+('Hellen Njoki', 'hnjoki', 2, 'clerk', 'qwe', 1),
+('mzee juma', 'mjuma', 3, 'doctor', 'zxc', 1),
+('Brian Njogu', 'bnjogu', 4, 'nurse', 'asd', 1),
+('root', 'admin', 5, 'admin', 'qwerty', 1);
 
 -- --------------------------------------------------------
 
@@ -466,6 +536,73 @@ INSERT INTO `users` (`id`, `username`) VALUES
 (0, '3'),
 (0, 'password=waze'),
 (0, 'cvbvc');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wards`
+--
+
+CREATE TABLE `wards` (
+  `ward no` int(11) NOT NULL,
+  `occupied` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wards`
+--
+
+INSERT INTO `wards` (`ward no`, `occupied`) VALUES
+(1, 1),
+(2, 1),
+(3, 0),
+(4, 0),
+(5, 0),
+(6, 0),
+(7, 0),
+(8, 0),
+(9, 0),
+(10, 0),
+(11, 0),
+(12, 0),
+(13, 0),
+(14, 0),
+(15, 0),
+(16, 0),
+(17, 0),
+(18, 0),
+(19, 0),
+(20, 0),
+(21, 0),
+(22, 0),
+(23, 0),
+(24, 0),
+(25, 0),
+(26, 0),
+(27, 0),
+(28, 0),
+(29, 0),
+(30, 0),
+(31, 0),
+(32, 0),
+(33, 0),
+(34, 0),
+(35, 0),
+(36, 0),
+(37, 0),
+(38, 0),
+(39, 0),
+(40, 0),
+(41, 0),
+(42, 0),
+(43, 0),
+(44, 0),
+(45, 0),
+(46, 0),
+(47, 0),
+(48, 0),
+(49, 0),
+(50, 0);
 
 --
 -- Indexes for dumped tables
@@ -510,6 +647,13 @@ ALTER TABLE `medical info`
   ADD KEY `id` (`id`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `no` (`no`);
+
+--
 -- Indexes for table `patient`
 --
 ALTER TABLE `patient`
@@ -535,6 +679,13 @@ ALTER TABLE `staff`
   ADD KEY `ID_2` (`ID`);
 
 --
+-- Indexes for table `wards`
+--
+ALTER TABLE `wards`
+  ADD PRIMARY KEY (`ward no`),
+  ADD UNIQUE KEY `ward no` (`ward no`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -542,43 +693,49 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `inpatient`
 --
 ALTER TABLE `inpatient`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=407;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=429;
 
 --
 -- AUTO_INCREMENT for table `medical info`
 --
 ALTER TABLE `medical info`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `patient record`
 --
 ALTER TABLE `patient record`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
