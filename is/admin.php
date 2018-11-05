@@ -15,7 +15,7 @@ include 'dbconnect.php';
     <!-- EXTERNAL CSS -->
     <meta content='width=device-width, initial-scale=1' name='viewport' />
     <title> *** </title>
-   
+
 
 </head>
 
@@ -57,13 +57,13 @@ include 'dbconnect.php';
 
 
     <?php echo "Welcome " . $_SESSION["user"]; ?> &nbsp;&nbsp;&nbsp;
-    
-  
 
-    <button id="" onclick ="" >Manage Staff  </button>
-    <button id="" onclick ="" >View Patients  </button>
-    <button id="" onclick ="" >View Current In - Patients  </button>
-    <button id="" onclick ="" >Reports  </button>
+
+
+    <button id="" onclick="">Manage Staff </button>
+    <button id="" onclick="">View Patients </button>
+    <button id="" onclick="">View Current In - Patients </button>
+    <button id="" onclick="">Reports </button>
 
 
 
@@ -74,7 +74,7 @@ include 'dbconnect.php';
 
             <div class="card" id="managestaff">
                 <h4>Staff List</h4>
-                  <?php
+                <?php
                     $sql = " SELECT `Name`, `username`, `ID`, `title`, `password`   FROM `staff`  ";
 
                                                     
@@ -130,13 +130,13 @@ include 'dbconnect.php';
 
                   ?>
 
-          
+
 
             </div>
 
             <div class="card" id="viewpatients">
                 <h4>Patient List</h4>
-                  <?php
+                <?php
                     $sql2 = " SELECT `name`, `age`, `id`, `tel`, `email`, `gender`  FROM `patient` ";
 
                                                     
@@ -200,8 +200,8 @@ include 'dbconnect.php';
             </div>
 
             <div class="card" id="viewinpatients">
-            <h4>Currently Admitted Patient's</h4>
-                  <?php
+                <h4>Currently Admitted Patient's</h4>
+                <?php
                     $sql3 = " SELECT `id`, `name`, `diagnosis`, `prescription`, `admission date`, `discharge date`, `duration`, `ward no`, `status`, `nurse`, `nurse notes`, `doctor` FROM `inpatient` WHERE `status` = 'Admitted' ";
 
                                                     
@@ -277,10 +277,10 @@ include 'dbconnect.php';
 
 
 
-                  ?> 
-                  
-                  <h4>Discharged Patients</h4>
-                  <?php
+                  ?>
+
+                <h4>Discharged Patients</h4>
+                <?php
                     $sql4 = " SELECT `id`, `name`, `diagnosis`, `prescription`, `admission date`, `discharge date`, `duration`, `ward no`, `status`, `nurse`, `nurse notes`, `doctor` FROM `inpatient` WHERE `status` = 'Discharged' ";
 
                                                     
@@ -359,6 +359,16 @@ include 'dbconnect.php';
                   ?>
             </div>
 
+
+
+            <div class = "card" id="graph1" >
+                <?php include 'graph1.php'; ?>
+            </div>
+
+            <div class = "card" id="graph2" >
+                    <?php include 'graph2.php'; ?>
+                </div>
+
         </div>
 
 
@@ -387,19 +397,21 @@ include 'dbconnect.php';
 
     $(document).ready(function () {
         //$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
-        //$('#viewappointments').load('viewappointmentsx.php');
-   
+        //$('#graph1').load('graph1.php');
+
+        //$('#graph2').load('graph2.php');
+
         //$("#patientdetails").show();
-        
+
 
 
 
     });
 
 
-  
 
-    
+
+
 // ]]>
 
 
