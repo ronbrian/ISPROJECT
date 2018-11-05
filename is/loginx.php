@@ -88,6 +88,18 @@ if ($result=mysqli_query($conn,$sql))
                   header("Location: index.php ");
              }
 
+       }elseif($title == "admin"){
+
+            session_start();
+            $_SESSION["user"] = $_GET["loginusername"];
+
+            if(isset($_SESSION["user"])){
+                 header("Location: admin.php ");
+                 
+     
+            }else{
+                 header("Location: index.php ");
+            }
        }
 
 
