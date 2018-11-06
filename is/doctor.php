@@ -10,12 +10,13 @@ $doctorid = $_SESSION["user"];
 <head>
     <link rel="stylesheet" type="text/css" href="stylingfile.css">
     <!-- EXTERNAL CSS -->
+    
     <script src="javascript.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- EXTERNAL JAVASCRIPT -->
     <!-- EXTERNAL CSS -->
     <meta content='width=device-width, initial-scale=1' name='viewport' />
-    <title> *** </title>
+    <title> Doctor </title>
     <style>
                                 body {font-family: Arial, Helvetica, sans-serif;}
                                 
@@ -82,19 +83,14 @@ $doctorid = $_SESSION["user"];
 </head>
 <body>
 
-    <div class="header">
-        <h1> <a href="##">Doctor's Portal</a> </h1>
-    </div>
 
     <div class="navbar">
         <div class="dropdown">
-            <button class="dropbtn">Dropdown 1
+            <button class="dropbtn">
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+
             </div>
         </div>
 
@@ -104,8 +100,7 @@ $doctorid = $_SESSION["user"];
             </button>
             <div class="dropdown-content">
                 <a href="logout.php">Log Out</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+
             </div>
         </div>
 
@@ -359,7 +354,7 @@ $doctorid = $_SESSION["user"];
                                 $('#patientchats2').load('chat.php');
                                 setInterval(function () {
                                     $('#patientchats2').load('chat.php');
-                            }, 10000); 
+                            }, 1000000); 
             
                              }
 

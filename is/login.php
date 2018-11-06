@@ -42,10 +42,9 @@
 						</div>
 						<div class="hr"></div>
 						<div class="foot-lnk">
-							<a href="#forgot">Forgot Password?</a>
 
-							<br><br><a href ="pages/patient/index.php "> Log In as Patient </a>
-
+							<br><br><a href ="pages/patient/index.php " style="color:white; "span="left" ><label  class="tab"> Log In as Patient</label></a>
+							
 						</div>
 				</form>
 				</div>

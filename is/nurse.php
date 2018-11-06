@@ -15,7 +15,7 @@ include 'dbconnect.php';
     <!-- EXTERNAL JAVASCRIPT -->
     <!-- EXTERNAL CSS -->
     <meta content='width=device-width, initial-scale=1' name='viewport' />
-    <title> *** </title>
+    <title> Nurse </title>
 
 
 
@@ -24,30 +24,16 @@ include 'dbconnect.php';
 
 <body>
 
-    <div class="header">
-        <h1> <a href="##">Nurse's Portal</a> </h1>
-    </div>
 
     <div class="navbar">
-        <div class="dropdown">
-            <button class="dropbtn">Dropdown 1
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </div>
-
+   
         <div class="dropdown">
             <button class="dropbtn">Log Out
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
                 <a href="logout.php">Log Out</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+
             </div>
         </div>
 
@@ -66,7 +52,6 @@ include 'dbconnect.php';
     <button id="admitpatientbtn" onclick="funcx2()"> Admit Patient </button>
     <button id="searchpatientbtn" onclick="searchpatient()"> Search Patient </button>
     <button id="viewinpatientsbtn" onclick="funcx1()"> Hospital Admissions </button>
-    <button id="myBtn"> Call For Doctor </button>
     <button id="viewwardsbtn" onclick="viewwards('abcd')" > View Wards </button>
 
 
@@ -255,6 +240,10 @@ include 'dbconnect.php';
     function funcx1() {
         $("#viewinpatients").show();
         $("#admitpatient").hide();
+        $("#searchpatient").hide();
+        $("#viewwards").hide();
+
+        
 
         //setting the values from the hidden form hiddendiv2 to be the same as the ones for admitting the patient
 
@@ -263,6 +252,8 @@ include 'dbconnect.php';
         $("#admitpatient").show();
         $("#viewinpatients").hide();
         $("#appointmentupdate1").hide();
+        $("#searchpatient").hide();
+
 
     }
 
@@ -324,6 +315,9 @@ include 'dbconnect.php';
 
     function searchpatient() {
         $("#searchpatient").show();
+        $("#admitpatient").hide();
+        $("#viewinpatients").hide();
+
 
 
     }
@@ -420,6 +414,7 @@ include 'dbconnect.php';
 
    function viewwards(str) {
     $("#viewwards").show();
+    $("#viewinpatients").hide();
 
 
         if (str.length == 0) {

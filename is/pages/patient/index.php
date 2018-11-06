@@ -78,7 +78,7 @@
                 <input type="text" onkeyup="showHint(this.value)" id="display1">
             </form>
             <button onclick="func1()"> Submit </button><br>
-            <input id="display" type="text" onkeyup="" value="" disabled>
+            <input id="display" type="text" onkeyup="" style="visibility: hidden;" value="" disabled>
 
         </div>
         <div class="card" id="passwordform">
