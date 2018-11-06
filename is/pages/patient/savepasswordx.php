@@ -4,6 +4,7 @@ include '../../dbconnect.php';
 session_start();
 
 $pass = $_REQUEST["q"]; 
+$pass = md5($pass);
 $id= $_REQUEST["uname"];
  
  

@@ -6,6 +6,7 @@ include 'dbconnect.php';
 
 $loginusername = $_GET["loginusername"];
 $loginpassword = $_GET["loginpassword"]; 
+$loginpassword = md5($loginpassword); 
 
 
 

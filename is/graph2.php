@@ -35,9 +35,7 @@ if ($result4->num_rows > 0) {
 
 <!DOCTYPE html>
 <html>
-<h4> Real-Time Graph Showing Number People With Common Diagnosis </h4>
 <head>
-  <title>jQuery Tablechart plugin examples</title>
 
   <script src="lib/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
   <script src="lib/jqplot/excanvas.min.js" type="text/javascript"></script>
@@ -100,12 +98,12 @@ if ($result4->num_rows > 0) {
 
 
 
-<table id="barchart-table" class="data">
+<table id="barchart-table" class='table table-hover'>
   <caption></caption>
 
 
 
-  <thead>
+  <thead class='text-warning' >
     <tr>
       <th>Month</th>
       <th>Patients</th>

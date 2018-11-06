@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-<h4> Graph Showing Number Of Users over Months </h4>
 <head>
-  <title>jQuery Tablechart plugin examples</title>
 
   <script src="lib/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
   <script src="lib/jqplot/excanvas.min.js" type="text/javascript"></script>
@@ -59,12 +57,12 @@
           series: [{
             renderer: $.jqplot.BarRenderer,
             yaxis: 'y2axis',
-            rendererOptions: { barWidth: 10 },
+            rendererOptions: { barWidth: 18 },
           }],
           axes: {
             y2axis: { 
               min: 0,
-              max: 600
+              max: 60
             }
           }
         },
@@ -163,8 +161,8 @@
 
 
 
-<table  id="basic-table" class="data">
-  <thead>
+<table id="basic-table" class='table table-hover'>
+  <thead class='text-warning' >
 
     <tr>
       <th>Month</th>
